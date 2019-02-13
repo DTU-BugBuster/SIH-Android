@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "816644377710",
+    "firebase_url": "https://waterborne.firebaseio.com",
+    "project_id": "waterborne",
+    "storage_bucket": "waterborne.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:816644377710:android:01025ba420dd4b1e",
+        "android_client_info": {
+          "package_name": "com.example.android.waterborne"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "816644377710-48lm9oddlam23oucre1dhebi2qvnls7a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.waterborne",
+            "certificate_hash": "738ed68cb5dcd66d4c3e819c7688f1d9ef649a10"
+          }
+        },
+        {
+          "client_id": "816644377710-l4vjuebqkb6qub6ea6odmeitgh2cqequ.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBr1BL5vmcHrrd_VAXk7keZpbo6rcoEJxU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "816644377710-l4vjuebqkb6qub6ea6odmeitgh2cqequ.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
