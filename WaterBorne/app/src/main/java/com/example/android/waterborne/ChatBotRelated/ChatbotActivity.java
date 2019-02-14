@@ -1,4 +1,4 @@
-package com.example.android.waterborne;
+package com.example.android.waterborne.ChatBotRelated;
 
 import android.Manifest;
 import android.content.Context;
@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.android.waterborne.R;
 import com.ibm.watson.developer_cloud.android.library.audio.MicrophoneHelper;
 import com.ibm.watson.developer_cloud.android.library.audio.MicrophoneInputStream;
 import com.ibm.watson.developer_cloud.android.library.audio.StreamPlayer;

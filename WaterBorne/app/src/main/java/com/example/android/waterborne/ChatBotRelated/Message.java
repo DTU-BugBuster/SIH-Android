@@ -1,4 +1,4 @@
-package com.example.android.waterborne;
+package com.example.android.waterborne.ChatBotRelated;
 
 /**
  * Created by VMac on 17/11/16.

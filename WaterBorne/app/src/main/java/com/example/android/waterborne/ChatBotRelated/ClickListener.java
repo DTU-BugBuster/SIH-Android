@@ -1,4 +1,4 @@
-package com.example.android.waterborne;
+package com.example.android.waterborne.ChatBotRelated;
 
 import android.view.View;
 
