@@ -1,4 +1,4 @@
-package com.example.android.waterborne;
+package com.example.android.waterborne.ChatBotRelated;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
