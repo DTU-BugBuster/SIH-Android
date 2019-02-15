@@ -10,6 +10,8 @@ import android.widget.Button;
 
 import com.example.android.waterborne.ChatBotRelated.ChatbotActivity;
 import com.example.android.waterborne.DiseasesHeatMapRelated.HeatmapsDemoActivity;
+import com.example.android.waterborne.NearbyHospitalsRelated.NearbyHospitalsActivity;
+import com.example.android.waterborne.ReportIssuesRelated.ReportProblemActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private ViewGroup mListView;
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         watson = findViewById(R.id.bt_watson);
         report = findViewById(R.id.bt_report);
         addDemo("☃ Cold? See Heatmap 🔥", HeatmapsDemoActivity.class);
+        addDemo("Emergency? NearbyHospitals here", NearbyHospitalsActivity.class);
         watson.setOnClickListener(view -> {
             startActivity(new Intent(this, ChatbotActivity.class));
         });

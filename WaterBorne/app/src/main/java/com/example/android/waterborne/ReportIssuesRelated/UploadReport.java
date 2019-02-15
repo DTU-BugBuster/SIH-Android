@@ -1,4 +1,4 @@
-package com.example.android.waterborne;
+package com.example.android.waterborne.ReportIssuesRelated;
 
 public class UploadReport {
     private String mName;
