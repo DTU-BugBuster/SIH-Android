@@ -54,9 +54,9 @@
         <activity android:name=".Auth.PhoneAuthActivity" />
         <activity android:name=".Auth.SignupActivity" />
         <activity android:name=".Auth.DifferentAuth" />
-        <activity android:name=".Auth.FacebookLoginActivity" />
         <activity android:name=".Auth.GoogleSignInActivity" />
-        <activity android:name=".Auth.AnonymousActivity"></activity>
+        <activity android:name=".Auth.AnonymousActivity" />
+        <activity android:name=".ReportProblemActivity"></activity>
     </application>
 
 </manifest>

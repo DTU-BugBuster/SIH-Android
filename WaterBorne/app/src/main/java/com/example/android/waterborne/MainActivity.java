@@ -9,12 +9,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.android.waterborne.ChatBotRelated.ChatbotActivity;
-import com.example.android.waterborne.DiseasesHeatMapRelated.HeatMapsActivity;
 import com.example.android.waterborne.DiseasesHeatMapRelated.HeatmapsDemoActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private ViewGroup mListView;
-    Button watson;
+    Button watson, report;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +21,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         mListView = findViewById(R.id.list);
         watson = findViewById(R.id.bt_watson);
+        report = findViewById(R.id.bt_report);
         addDemo("☃ Cold? See Heatmap 🔥", HeatmapsDemoActivity.class);
         watson.setOnClickListener(view -> {
             startActivity(new Intent(this, ChatbotActivity.class));
+        });
+        report.setOnClickListener(view1 -> {
+            startActivity(new Intent(this, ReportProblemActivity.class));
         });
 
 

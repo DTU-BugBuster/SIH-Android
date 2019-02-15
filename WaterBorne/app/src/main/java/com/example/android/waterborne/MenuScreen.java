@@ -53,10 +53,6 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
             R.string.weather,
             R.string.forum,
             R.string.buy,
-
-
-
-
     };
 
     private FlowingDrawer mDrawer;
@@ -115,7 +111,6 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
 //        mDrawer = (FlowingDrawer) findViewById(R.id.drawerlayout);
         WaveLoadingView mWaveLoadingView = (WaveLoadingView) findViewById(R.id.waveLoadingView);
         mWaveLoadingView.setShapeType(WaveLoadingView.ShapeType.CIRCLE);
-
         mWaveLoadingView.setCenterTitleColor(Color.GRAY);
         mWaveLoadingView.setBottomTitleSize(18);
         mWaveLoadingView.setProgressValue(20);
@@ -328,16 +323,12 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
 //                FirebaseAuth.getInstance().signOut();
                 login(null);
                 break;}
-
-
         }
     }
-
     public void login(View v ) {
         startActivity(new Intent(getBaseContext(),LoginActivity.class));
         //finish();
     }
-
     public void hosp(View v) {
 //        startActivity(new Intent(this,MapsActivity.class));
     }
@@ -345,9 +336,7 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
         Toast.makeText(this,"Paytm ",Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this,PaytmActivity.class));
     }
-
     public void anonymousChat(View v) {
         startActivity(new Intent(this,AnonymousChat.class));
     }
-
 }

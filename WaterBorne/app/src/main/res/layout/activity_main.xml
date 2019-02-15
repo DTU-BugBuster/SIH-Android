@@ -10,10 +10,16 @@
         android:id="@+id/bt_watson"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Feeling Lonely? Here is your parter 😗 😘"
+        android:text="Feeling Lonely? Here is your partner 😗 😘"
         android:textAllCaps="false"
         android:textStyle="bold" />
-
+    <Button
+        android:id="@+id/bt_report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Report a problem ⚠️"
+        android:textStyle="bold"
+        android:textAllCaps="false"/>
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
