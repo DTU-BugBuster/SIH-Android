@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.android.waterborne.Auth.LoginActivity;
 import com.example.android.waterborne.ChatApp.AnonymousChat;
+import com.example.android.waterborne.NearbyHospitalsRelated.NearbyHospitalsActivity;
 import com.mxn.soul.flowingdrawer_core.FlowingDrawer;
 import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
 import com.nightonke.boommenu.BoomButtons.HamButton;
@@ -53,6 +54,10 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
             R.string.weather,
             R.string.forum,
             R.string.buy,
+
+
+
+
     };
 
     private FlowingDrawer mDrawer;
@@ -111,6 +116,7 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
 //        mDrawer = (FlowingDrawer) findViewById(R.id.drawerlayout);
         WaveLoadingView mWaveLoadingView = (WaveLoadingView) findViewById(R.id.waveLoadingView);
         mWaveLoadingView.setShapeType(WaveLoadingView.ShapeType.CIRCLE);
+
         mWaveLoadingView.setCenterTitleColor(Color.GRAY);
         mWaveLoadingView.setBottomTitleSize(18);
         mWaveLoadingView.setProgressValue(20);
@@ -196,7 +202,6 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
     }
     /*  public  void in()
       {
-
           WaveLoadingView mWaveLoadingView = (WaveLoadingView) findViewById(R.id.waveLoadingView);
           mWaveLoadingView.setShapeType(WaveLoadingView.ShapeType.CIRCLE);
           mWaveLoadingView.setTopTitle("Top Title");
@@ -214,7 +219,6 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
           mWaveLoadingView.resumeAnimation();
           mWaveLoadingView.cancelAnimation();
           mWaveLoadingView.startAnimation();
-
       }*/
     public void bmb()
     {
@@ -288,7 +292,7 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
     public void buy(int pos)
     {
         // Toast.makeText(this, Integer.toString(pos), Toast.LENGTH_LONG).show();
-//        Intent in = new Intent( this, memes2Activity.class);
+//        Intent in = new Intent( this, MemeActivity.class);
 //        startActivity(in);
     }
     public void anonymous(int pos)
@@ -323,20 +327,26 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
 //                FirebaseAuth.getInstance().signOut();
                 login(null);
                 break;}
+
+
         }
     }
+
     public void login(View v ) {
         startActivity(new Intent(getBaseContext(),LoginActivity.class));
         //finish();
     }
+
     public void hosp(View v) {
-//        startActivity(new Intent(this,MapsActivity.class));
+        startActivity(new Intent(this,NearbyHospitalsActivity.class));
     }
     public void paytm(View v) {
         Toast.makeText(this,"Paytm ",Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this,PaytmActivity.class));
     }
+
     public void anonymousChat(View v) {
         startActivity(new Intent(this,AnonymousChat.class));
     }
+
 }
