@@ -31,7 +31,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".NearbyHospitalsRelated.NearbyHospitalsActivity">
+        <activity android:name=".BoardingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -45,7 +45,7 @@
         <activity android:name=".DiseasesHeatMapRelated.HeatmapsDemoActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".SplashActivity" />
-        <activity android:name=".BoardingActivity" />
+        <activity android:name=".NearbyHospitalsRelated.NearbyHospitalsActivity" />
         <activity android:name=".MenuScreen" />
         <activity android:name=".ChatApp.AnonymousChat" />
         <activity android:name=".Auth.BaseActivity" />
