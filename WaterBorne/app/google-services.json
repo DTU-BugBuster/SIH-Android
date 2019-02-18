@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "816644377710-ui3fshpkh7vtvo9uano6lu4lv71tr8p7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.waterborne",
+            "certificate_hash": "990115546bc590204241af4028b314d7850680c6"
+          }
+        },
+        {
           "client_id": "816644377710-l4vjuebqkb6qub6ea6odmeitgh2cqequ.apps.googleusercontent.com",
           "client_type": 3
         }
