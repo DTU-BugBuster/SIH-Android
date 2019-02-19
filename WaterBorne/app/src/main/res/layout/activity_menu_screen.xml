@@ -68,13 +68,6 @@
             android:src="@drawable/nav_ham"/>
         <!--android:src="@drawable/ic_menu_90"-->
         <!--android:contentDescription="0" />-->
-
-        <com.example.android.myapplication.Widget.CanaroTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/activity"
-            android:textSize="@dimen/guillotine_item_text_size" />
     </android.support.v7.widget.Toolbar>
 
 
@@ -146,4 +139,3 @@
 </FrameLayout>
 
     <!--</com.mxn.soul.flowingdrawer_core.FlowingDrawer>-->
-
