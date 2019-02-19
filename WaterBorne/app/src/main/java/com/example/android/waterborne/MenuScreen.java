@@ -60,7 +60,7 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
 
     };
 
-    private FlowingDrawer mDrawer;
+
     Toolbar toolbar;
     FrameLayout root;
     View contentHamburger;
@@ -73,7 +73,6 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_screen);
         String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
-
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);
@@ -194,11 +193,10 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
 
     @Override
     public void onBackPressed() {
-        if (mDrawer.isMenuVisible()) {
-            mDrawer.closeMenu();
-        } else {
-            super.onBackPressed();
-        }
+        Intent a = new Intent(Intent.ACTION_MAIN);
+        a.addCategory(Intent.CATEGORY_HOME);
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(a);
     }
     /*  public  void in()
       {
