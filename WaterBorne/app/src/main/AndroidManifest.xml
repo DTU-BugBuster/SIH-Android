@@ -27,6 +27,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".WaterQualityImageUpload"></activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
@@ -58,7 +60,7 @@
         <activity android:name=".Auth.AnonymousActivity" />
         <activity android:name=".ReportIssuesRelated.ReportProblemActivity" />
         <activity android:name=".PaytmActivity" />
-        <activity android:name=".CloudMessaging.CloudMessaging"></activity>
+        <activity android:name=".CloudMessaging.CloudMessaging" />
     </application>
 
 </manifest>

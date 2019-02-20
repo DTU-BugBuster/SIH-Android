@@ -109,4 +109,5 @@
     <string name="anonymous">Anonymous Chat</string>
     <string name="title_activity_memes2">memes2Activity</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="submit_text">Submit</string>
 </resources>
