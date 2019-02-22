@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,9 +14,12 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.example.android.waterborne.Adapters.MenuAdapter;
 import com.example.android.waterborne.Auth.LoginActivity;
 import com.example.android.waterborne.ChatApp.AnonymousChat;
+import com.example.android.waterborne.Models.Item;
 import com.example.android.waterborne.NearbyHospitalsRelated.NearbyHospitalsActivity;
+import com.google.firebase.auth.FirebaseAuth;
 import com.mxn.soul.flowingdrawer_core.FlowingDrawer;
 import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
 import com.nightonke.boommenu.BoomButtons.HamButton;
@@ -25,11 +30,12 @@ import com.nightonke.boommenu.Piece.PiecePlaceEnum;
 import com.yalantis.guillotine.animation.GuillotineAnimation;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import me.itangqi.waveloadingview.WaveLoadingView;
 
-public class MenuScreen extends AppCompatActivity implements View.OnClickListener{
+public class MenuScreen extends AppCompatActivity implements View.OnClickListener, MenuAdapter.ItemListener{
 
     private static final long RIPPLE_DURATION = 250;
     Button tvchat;
@@ -37,6 +43,10 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
     Button tvhosp;
     Button tvsignout;
     private WebView chatWindow;
+    private RecyclerView recyclerView;
+    private ArrayList<Item> arrayList;
+    private FirebaseAuth mAuth;
+
 
     static int[] imageResources = new int[]{
             R.drawable.emotion,
@@ -44,8 +54,6 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
             R.drawable.robot,
             R.drawable.project,
             R.drawable.clown,
-
-
 
     };
     static int[] Strings = new int[]{
@@ -55,16 +63,11 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
             R.string.forum,
             R.string.buy,
 
-
-
-
     };
-
 
     Toolbar toolbar;
     FrameLayout root;
     View contentHamburger;
-
 
     static int imageResourceIndex = 0;
     static int str = 0;
@@ -74,9 +77,27 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
         setContentView(R.layout.activity_menu_screen);
         String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
 
+
+        mAuth = FirebaseAuth.getInstance();
+        Toast.makeText(this, "Welcome " + mAuth.getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        arrayList = new ArrayList<>();
+
+        arrayList.add(new Item("Chat with a doctor", R.drawable.patient_colourless, "#0A9B88"));
+        arrayList.add(new Item("Test with AI", R.drawable.chemistry_colourless, "#3E51B1"));
+        arrayList.add(new Item("Chatbot", R.drawable.robot_colourless, "#673BB7"));
+        arrayList.add(new Item("News", R.drawable.newspaper, "#4BAA50"));
+        arrayList.add(new Item("Is Place Safe", R.drawable.tsunami_colorless, "#F94336"));
+        arrayList.add(new Item("Home Remedies", R.drawable.medical, "#0A9B88"));
+
+
+        MenuAdapter menuAdapter = new MenuAdapter(this, arrayList, this);
+        recyclerView.setAdapter(menuAdapter);
+        GridLayoutManager manager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(manager);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
-            getSupportActionBar().setTitle(null);
+            getSupportActionBar().setTitle("Water Borne");
         }
 
 
@@ -96,12 +117,12 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
 //
 //        LayoutInflater li  = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 //        assert li != null;
-        View v = LayoutInflater.from(this).inflate(R.layout.guillotine,null);
+        View v = LayoutInflater.from(this).inflate(R.layout.guillotine, null);
 
-        tvchat= v.findViewById(R.id.tvchat);
-        tvpaytm= v.findViewById(R.id.tvpaytm);
-        tvhosp= v.findViewById(R.id.tvhosp);
-        tvsignout= v.findViewById(R.id.tvsignout);
+        tvchat = v.findViewById(R.id.tvchat);
+        tvpaytm = v.findViewById(R.id.tvpaytm);
+        tvhosp = v.findViewById(R.id.tvhosp);
+        tvsignout = v.findViewById(R.id.tvsignout);
 
 
         tvchat.setOnClickListener(this);
@@ -110,86 +131,7 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
         tvsignout.setOnClickListener(this);
 
 
-        // Toast.makeText(this, currentDateTimeString, Toast.LENGTH_LONG).show();;
-
-//        mDrawer = (FlowingDrawer) findViewById(R.id.drawerlayout);
-        WaveLoadingView mWaveLoadingView = (WaveLoadingView) findViewById(R.id.waveLoadingView);
-        mWaveLoadingView.setShapeType(WaveLoadingView.ShapeType.CIRCLE);
-
-        mWaveLoadingView.setCenterTitleColor(Color.GRAY);
-        mWaveLoadingView.setBottomTitleSize(18);
-        mWaveLoadingView.setProgressValue(20);
-        mWaveLoadingView.setBorderWidth(0);
-        mWaveLoadingView.setAmplitudeRatio(60);
-        mWaveLoadingView.setWaveColor(Color.parseColor("#ff64c2f4"));
-        mWaveLoadingView.setTopTitleStrokeColor(Color.parseColor("#ff1ca8f4"));
-        mWaveLoadingView.setTopTitleStrokeWidth(3);
-        mWaveLoadingView.setAnimDuration(6000);
-        mWaveLoadingView.pauseAnimation();
-        mWaveLoadingView.resumeAnimation();
-        mWaveLoadingView.cancelAnimation();
-        mWaveLoadingView.startAnimation();
-
-        bmb();
-
-//        setupToolbar();
-//        setupMenu();
-
     }
-
-
-
-//    protected void setupToolbar() {
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//        toolbar.setNavigationIcon(R.drawable.ic_menu_white);
-//
-//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                mDrawer.toggleMenu();
-//            }
-//        });
-//    }
-//
-//    private void setupMenu() {
-//        FragmentManager fm = getSupportFragmentManager();
-//        MenuListFragment mMenuFragment = (MenuListFragment) fm.findFragmentById(R.id.id_container_menu);
-//        if (mMenuFragment == null) {
-//            mMenuFragment = new MenuListFragment();
-//            fm.beginTransaction().add(R.id.id_container_menu, mMenuFragment).commit();
-//        }
-//
-//        mDrawer.setOnDrawerStateChangeListener(new ElasticDrawer.OnDrawerStateChangeListener() {
-//            @Override
-//            public void onDrawerStateChange(int oldState, int newState) {
-//                if (newState == ElasticDrawer.STATE_CLOSED) {
-//                    Log.i("MainActivity", "Drawer STATE_CLOSED");
-//                }
-//            }
-//
-//            @Override
-//            public void onDrawerSlide(float openRatio, int offsetPixels) {
-//                Log.i("MainActivity", "openRatio=" + openRatio + " ,offsetPixels=" + offsetPixels);
-//            }
-//        });
-//
-//        mDrawer = (FlowingDrawer) findViewById(R.id.drawerlayout);
-//        mDrawer.setTouchMode(ElasticDrawer.TOUCH_MODE_BEZEL);
-//        mDrawer.setOnDrawerStateChangeListener(new ElasticDrawer.OnDrawerStateChangeListener() {
-//            @Override
-//            public void onDrawerStateChange(int oldState, int newState) {
-//                if (newState == ElasticDrawer.STATE_CLOSED) {
-//                    Log.i("MenuActivity", "Drawer STATE_CLOSED");
-//                }
-//            }
-//
-//            @Override
-//            public void onDrawerSlide(float openRatio, int offsetPixels) {
-//                Log.i("MenuActivity", "openRatio=" + openRatio + " ,offsetPixels=" + offsetPixels);
-//            }
-//        });
-//    }
 
     @Override
     public void onBackPressed() {
@@ -198,69 +140,7 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
         a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(a);
     }
-    /*  public  void in()
-      {
-          WaveLoadingView mWaveLoadingView = (WaveLoadingView) findViewById(R.id.waveLoadingView);
-          mWaveLoadingView.setShapeType(WaveLoadingView.ShapeType.CIRCLE);
-          mWaveLoadingView.setTopTitle("Top Title");
-          mWaveLoadingView.setCenterTitleColor(Color.GRAY);
-          mWaveLoadingView.setBottomTitleSize(18);
-          mWaveLoadingView.setProgressValue(80);
-          mWaveLoadingView.setBorderWidth(10);
-          mWaveLoadingView.setAmplitudeRatio(60);
-          mWaveLoadingView.setWaveColor(Color.GRAY);
-          mWaveLoadingView.setBorderColor(Color.GRAY);
-          mWaveLoadingView.setTopTitleStrokeColor(Color.BLUE);
-          mWaveLoadingView.setTopTitleStrokeWidth(3);
-          mWaveLoadingView.setAnimDuration(6000);
-          mWaveLoadingView.pauseAnimation();
-          mWaveLoadingView.resumeAnimation();
-          mWaveLoadingView.cancelAnimation();
-          mWaveLoadingView.startAnimation();
-      }*/
-    public void bmb()
-    {
-        BoomMenuButton bmb = (BoomMenuButton) findViewById(R.id.bmb);
-        bmb.setButtonEnum(ButtonEnum.Ham);
-        bmb.setPiecePlaceEnum(PiecePlaceEnum.HAM_5);
-        bmb.setButtonPlaceEnum(ButtonPlaceEnum.HAM_5);
-        for (int i = 0; i < bmb.getPiecePlaceEnum().pieceNumber(); i++) {
-            HamButton.Builder builder = new HamButton.Builder()
-                    .normalTextRes(getString())
-                    .listener(new OnBMClickListener() {
-                        @Override
-                        public void onBoomButtonClick(int index) {
 
-
-                            if (index == 0) {
-                                start(index);
-
-                            }
-                            if (index == 1) {
-                                ordering(index);
-                            }
-                            if (index == 2) {
-                                stock(index);
-
-                            }
-                            if (index == 3) {
-                                sales(index);
-                            }
-                            if (index == 4) {
-                                buy(index);
-                            }
-                            if(index == 5)
-                            { anonymous(index);
-                            }
-                        }
-
-
-                    })
-
-                    .normalImageRes(getImageResource());
-            bmb.addBuilder(builder);
-        }
-    }
     public static int getString() {
         if (str >= Strings.length) str = 0;
         return Strings[str++];
@@ -332,7 +212,7 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
 
     public void login(View v ) {
         startActivity(new Intent(getBaseContext(),LoginActivity.class));
-        //finish();
+        finish();
     }
 
     public void hosp(View v) {
@@ -345,6 +225,11 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
 
     public void anonymousChat(View v) {
         startActivity(new Intent(this,AnonymousChat.class));
+    }
+
+    @Override
+    public void onItemClick(Item item) {
+        Toast.makeText(getApplicationContext(), item.text + " is clicked", Toast.LENGTH_SHORT).show();
     }
 
 }
