@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.android.waterborne.Adapters.MenuAdapter;
 import com.example.android.waterborne.Auth.LoginActivity;
 import com.example.android.waterborne.ChatApp.AnonymousChat;
+import com.example.android.waterborne.ChatBotRelated.ChatbotActivity;
 import com.example.android.waterborne.Models.Item;
 import com.example.android.waterborne.NearbyHospitalsRelated.NearbyHospitalsActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -83,12 +84,14 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         arrayList = new ArrayList<>();
 
-        arrayList.add(new Item("Chat with a doctor", R.drawable.patient_colourless, "#0A9B88"));
-        arrayList.add(new Item("Test with AI", R.drawable.chemistry_colourless, "#3E51B1"));
-        arrayList.add(new Item("Chatbot", R.drawable.robot_colourless, "#673BB7"));
-        arrayList.add(new Item("News", R.drawable.newspaper, "#4BAA50"));
-        arrayList.add(new Item("Is Place Safe", R.drawable.tsunami_colorless, "#F94336"));
-        arrayList.add(new Item("Home Remedies", R.drawable.medical, "#0A9B88"));
+        arrayList.add(new Item(getString(R.string.chat_doctor), R.drawable.patient_colourless, "#0A9B88"));
+        arrayList.add(new Item(getString(R.string.test_ai), R.drawable.chemistry_colourless, "#3E51B1"));
+        arrayList.add(new Item(getString(R.string.chatbot), R.drawable.robot_colourless, "#673BB7"));
+        arrayList.add(new Item(getString(R.string.news_water), R.drawable.newspaper, "#4BAA50"));
+        arrayList.add(new Item(getString(R.string.is_safe), R.drawable.tsunami_colorless, "#F94336"));
+        arrayList.add(new Item(getString(R.string.home_remedies), R.drawable.medical, "#0A9B88"));
+        arrayList.add(new Item(getString(R.string.hospital), R.drawable.map_colourless, "#0A9B88"));
+        arrayList.add(new Item(getString(R.string.predict_loss), R.drawable.danger, "#3E51B1"));
 
 
         MenuAdapter menuAdapter = new MenuAdapter(this, arrayList, this);
@@ -230,6 +233,32 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
     @Override
     public void onItemClick(Item item) {
         Toast.makeText(getApplicationContext(), item.text + " is clicked", Toast.LENGTH_SHORT).show();
-    }
 
+
+        if (item.getText().equals("Chat with a doctor")) {
+            startActivity(new Intent(getBaseContext(), AnonymousChat.class));
+        } else if (item.getText().equals("Test with AI")) {
+//            startActivity(new Intent(getBaseContext(),TestWithAI.class));
+            Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
+        } else if (item.getText().equals("Chatbot")) {
+            startActivity(new Intent(getBaseContext(), ChatbotActivity.class));
+        } else if (item.getText().equals("News")) {
+//            startActivity(new Intent(getBaseContext(),news.class));
+            Toast.makeText(this, "Will add in next version", Toast.LENGTH_SHORT).show();
+        } else if (item.getText().equals("Is Place Safe")) {
+//            startActivity(new Intent(getBaseContext(),placeSafe.class));
+            Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
+        } else if (item.getText().equals("Home Remedies")) {
+//            startActivity(new Intent(getBaseContext(),HomeRemedy.class));
+            Toast.makeText(this, "Will add in next version", Toast.LENGTH_SHORT).show();
+        } else if (item.getText().equals("Nearest Hospital")) {
+            startActivity(new Intent(getBaseContext(), NearbyHospitalsActivity.class));
+        } else if (item.getText().equals("Prediction of loss")) {
+//            startActivity(new Intent(getBaseContext(),PredictLoss.class));
+            Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
+
+        } else {
+            Toast.makeText(this, "Error !", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
