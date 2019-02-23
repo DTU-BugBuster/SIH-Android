@@ -61,48 +61,39 @@ public class CloudMessaging extends AppCompatActivity {
                 Log.d(TAG, "Subscribing to weather topic");
                 // [START subscribe_topics]
                 FirebaseMessaging.getInstance().subscribeToTopic("weather")
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                String msg = getString(R.string.msg_subscribed);
-                                if (!task.isSuccessful()) {
-                                    msg = getString(R.string.msg_subscribe_failed);
-                                }
-                                Log.d(TAG, msg);
-                                Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                        .addOnCompleteListener(task -> {
+                            String msg = getString(R.string.msg_subscribed);
+                            if (!task.isSuccessful()) {
+                                msg = getString(R.string.msg_subscribe_failed);
                             }
+                            Log.d(TAG, msg);
+                            Toast.makeText(CloudMessaging.this, msg, Toast.LENGTH_SHORT).show();
                         });
                 // [END subscribe_topics]
             }
         });
 
         Button logTokenButton = findViewById(R.id.logTokenButton);
-        logTokenButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Get token
-                // [START retrieve_current_token]
-                FirebaseInstanceId.getInstance().getInstanceId()
-                        .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                                if (!task.isSuccessful()) {
-                                    Log.w(TAG, "getInstanceId failed", task.getException());
-                                    return;
-                                }
-
-                                // Get new Instance ID token
-                                String token = task.getResult().getToken();
-
-                                // Log and toast
-                                String msg = getString(R.string.msg_token_fmt, token);
-                                Log.d(TAG, msg);
-                                Toast.makeText(CloudMessaging.this, msg, Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                // [END retrieve_current_token]
-            }
-        });
+//        logTokenButton.setOnClickListener(v -> {
+//            // Get token
+//            // [START retrieve_current_token]
+//            FirebaseInstanceId.getInstance().getInstanceId()
+//                    .addOnCompleteListener((OnCompleteListener<InstanceIdResult>) task -> {
+//                        if (!task.isSuccessful()) {
+//                            Log.w(TAG, "getInstanceId failed", task.getException());
+//                            return;
+//                        }
+//
+//                        // Get new Instance ID token
+//                        String token = task.getResult().getToken();
+//
+//                        // Log and toast
+//                        String msg = getString(R.string.msg_token_fmt, token);
+//                        Log.d(TAG, msg);
+//                        Toast.makeText(CloudMessaging.this, msg, Toast.LENGTH_SHORT).show();
+//                    });
+//            // [END retrieve_current_token]
+//        });
     }
 
 }
