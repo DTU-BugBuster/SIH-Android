@@ -58,7 +58,8 @@
         <activity android:name=".Auth.AnonymousActivity" />
         <activity android:name=".ReportIssuesRelated.ReportProblemActivity" />
         <activity android:name=".PaytmActivity" />
-        <activity android:name=".CloudMessaging.CloudMessaging"></activity>
+        <activity android:name=".CloudMessaging.CloudMessaging" />
+        <activity android:name=".NewsActivity"></activity>
     </application>
 
 </manifest>

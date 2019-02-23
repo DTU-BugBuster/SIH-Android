@@ -243,7 +243,7 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
         } else if (item.getText().equals("Chatbot")) {
             startActivity(new Intent(getBaseContext(), ChatbotActivity.class));
         } else if (item.getText().equals("News")) {
-//            startActivity(new Intent(getBaseContext(),news.class));
+            startActivity(new Intent(getBaseContext(),NewsActivity.class));
             Toast.makeText(this, "Will add in next version", Toast.LENGTH_SHORT).show();
         } else if (item.getText().equals("Is Place Safe")) {
 //            startActivity(new Intent(getBaseContext(),placeSafe.class));
