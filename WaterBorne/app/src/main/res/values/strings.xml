@@ -109,4 +109,13 @@
     <string name="anonymous">Anonymous Chat</string>
     <string name="title_activity_memes2">memes2Activity</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="chat_doctor">Chat with a doctor</string>
+    <string name="test_ai">Test with AI</string>
+    <string name="chatbot">Chatbot</string>
+    <string name="news_water">News</string>
+    <string name="is_safe">Is Place Safe</string>
+    <string name="home_remedies">Home Remedies</string>
+    <string name="hospital">Nearest Hospital</string>
+    <string name="predict_loss">Prediction of loss</string>
+    <string name="submit_text">Submit</string>
 </resources>
