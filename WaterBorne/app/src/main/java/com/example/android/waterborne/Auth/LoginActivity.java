@@ -35,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 //        ButterKnife.inject(this);
 
+
         _emailText = findViewById(R.id.input_email);
         _passwordText = findViewById(R.id.input_password);
         _loginButton = findViewById(R.id.btn_login);
@@ -66,6 +67,12 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         mAuth = FirebaseAuth.getInstance();
+        if(mAuth.getCurrentUser() != null){
+            startActivity(new Intent(getBaseContext(),MenuScreen.class));
+            finish();
+        }
+
+
 
     }
 
@@ -86,6 +93,8 @@ public class LoginActivity extends AppCompatActivity {
 
     public void login() {
         Log.d(TAG, "Login");
+
+
 
         if (!validate()) {
             onLoginFailed();

@@ -249,15 +249,13 @@ public class ChatbotActivity extends AppCompatActivity {
                         // speak the message
                         new SayTask().execute(outMessage.getMessage());
 
-                        runOnUiThread(new Runnable() {
-                            public void run() {
-                                mAdapter.notifyDataSetChanged();
-                                if (mAdapter.getItemCount() > 1) {
-                                    recyclerView.getLayoutManager().smoothScrollToPosition(recyclerView, null, mAdapter.getItemCount() - 1);
-
-                                }
+                        runOnUiThread(() -> {
+                            mAdapter.notifyDataSetChanged();
+                            if (mAdapter.getItemCount() > 1) {
+                                recyclerView.getLayoutManager().smoothScrollToPosition(recyclerView, null, mAdapter.getItemCount() - 1);
 
                             }
+
                         });
                     }
                 } catch (Exception e) {
@@ -286,14 +284,11 @@ public class ChatbotActivity extends AppCompatActivity {
     private void recordMessage() {
         if (listening != true) {
             capture = microphoneHelper.getInputStream(true);
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        speechService.recognizeUsingWebSocket(getRecognizeOptions(capture), new MicrophoneRecognizeDelegate());
-                    } catch (Exception e) {
-                        showError(e);
-                    }
+            new Thread(() -> {
+                try {
+                    speechService.recognizeUsingWebSocket(getRecognizeOptions(capture), new MicrophoneRecognizeDelegate());
+                } catch (Exception e) {
+                    showError(e);
                 }
             }).start();
             listening = true;
@@ -370,33 +365,17 @@ public class ChatbotActivity extends AppCompatActivity {
     }
 
     private void showMicText(final String text) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                inputMessage.setText(text);
-            }
-        });
+        runOnUiThread(() -> inputMessage.setText(text));
     }
 
     private void enableMicButton() {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                btnRecord.setEnabled(true);
-            }
-        });
+        runOnUiThread(() -> btnRecord.setEnabled(true));
     }
 
     private void showError(final Exception e) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(ChatbotActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                e.printStackTrace();
-            }
+        runOnUiThread(() -> {
+            Toast.makeText(ChatbotActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
         });
     }
 }
-
-
-

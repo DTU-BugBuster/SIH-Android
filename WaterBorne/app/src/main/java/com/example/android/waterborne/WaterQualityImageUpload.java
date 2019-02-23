@@ -149,7 +149,7 @@ public class WaterQualityImageUpload extends AppCompatActivity {
                 && data != null && data.getData() != null) {
             mImageUri = data.getData();
 
-            Picasso.with(this).load(mImageUri).into(mButtonChooseImage);
+            Picasso.get().load(mImageUri).into(mButtonChooseImage);
         }
     }
 }

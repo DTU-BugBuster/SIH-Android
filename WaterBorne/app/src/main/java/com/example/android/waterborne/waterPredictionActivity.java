@@ -49,11 +49,11 @@ public class waterPredictionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_seed_prediction);
+        setContentView(R.layout.activity_water_quality_image_upload);
         mauth = FirebaseAuth.getInstance();
         mCurrentUser = mauth.getCurrentUser();
 
-        pd = new ProgressDialog(SeedPredictionActivity.this);
+        pd = new ProgressDialog(waterPredictionActivity.this);
         mButtonChooseImage = findViewById(R.id.ib_chooseImage); //
         mButtonUpload = findViewById(R.id.submitPost); //
 
@@ -115,15 +115,15 @@ public class waterPredictionActivity extends AppCompatActivity {
                             mDatabaseRef.child(uploadId).setValue(upload);
 
                             pd.dismiss();
-                            Toast.makeText(SeedPredictionActivity.this, "Upload successful", Toast.LENGTH_LONG).show();
+                            Toast.makeText(waterPredictionActivity.this, "Upload successful", Toast.LENGTH_LONG).show();
                             finish();
-                            startActivity(new Intent(SeedPredictionActivity.this, MainActivity.class));
+                            startActivity(new Intent(waterPredictionActivity.this, MainActivity.class));
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(SeedPredictionActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(waterPredictionActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
         } else {
@@ -145,7 +145,7 @@ public class waterPredictionActivity extends AppCompatActivity {
                 && data != null && data.getData() != null) {
             mImageUri = data.getData();
 
-            Picasso.with(this).load(mImageUri).into(mButtonChooseImage);
+            Picasso.get().load(mImageUri).into(mButtonChooseImage);
         }
     }
 }
