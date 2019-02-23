@@ -19,7 +19,7 @@
             android:id="@+id/pathView"
             android:layout_width="300dp"
             android:layout_height="300dp"
-            app:svg="@raw/mental" />
+            app:svg="@raw/water" />
 
         <TextView
             android:layout_width="fill_parent"
