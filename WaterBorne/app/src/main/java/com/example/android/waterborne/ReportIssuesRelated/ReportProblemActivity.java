@@ -105,7 +105,7 @@ public class ReportProblemActivity extends AppCompatActivity {
                 && data != null && data.getData() != null) {
             mImageUri = data.getData();
 
-            Picasso.with(this).load(mImageUri).into(image);
+            Picasso.get().load(mImageUri).into(image);
         }
     }
 
