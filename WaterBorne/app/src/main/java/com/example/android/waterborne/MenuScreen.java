@@ -18,6 +18,7 @@ import com.example.android.waterborne.Adapters.MenuAdapter;
 import com.example.android.waterborne.Auth.LoginActivity;
 import com.example.android.waterborne.ChatApp.AnonymousChat;
 import com.example.android.waterborne.ChatBotRelated.ChatbotActivity;
+import com.example.android.waterborne.HomeRemedies.HomeRemedy;
 import com.example.android.waterborne.Models.Item;
 import com.example.android.waterborne.NearbyHospitalsRelated.NearbyHospitalsActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -249,7 +250,7 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
 //            startActivity(new Intent(getBaseContext(),placeSafe.class));
             Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
         } else if (item.getText().equals("Home Remedies")) {
-//            startActivity(new Intent(getBaseContext(),HomeRemedy.class));
+            startActivity(new Intent(getBaseContext(),HomeRemedy.class));
             Toast.makeText(this, "Will add in next version", Toast.LENGTH_SHORT).show();
         } else if (item.getText().equals("Nearest Hospital")) {
             startActivity(new Intent(getBaseContext(), NearbyHospitalsActivity.class));
