@@ -59,7 +59,10 @@
         <activity android:name=".ReportIssuesRelated.ReportProblemActivity" />
         <activity android:name=".PaytmActivity" />
         <activity android:name=".CloudMessaging.CloudMessaging" />
-        <activity android:name=".NewsActivity"></activity>
+        <activity android:name=".NewsActivity" />
+        <activity android:name=".ReportProblem.ReportIssuesActivity" />
+        <activity android:name=".HomeRemedies.HomeRemediesActivity" />
+        <activity android:name=".HomeRemedies.HomeRemedy"></activity>
     </application>
 
 </manifest>
