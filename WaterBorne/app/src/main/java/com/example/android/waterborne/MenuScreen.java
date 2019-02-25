@@ -85,15 +85,14 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         arrayList = new ArrayList<>();
 
-        arrayList.add(new Item(getString(R.string.chat_doctor), R.drawable.patient_colourless, "#0A9B88"));
-        arrayList.add(new Item(getString(R.string.test_ai), R.drawable.chemistry_colourless, "#3E51B1"));
-        arrayList.add(new Item(getString(R.string.chatbot), R.drawable.robot_colourless, "#673BB7"));
-        arrayList.add(new Item(getString(R.string.news_water), R.drawable.newspaper, "#4BAA50"));
-        arrayList.add(new Item(getString(R.string.is_safe), R.drawable.tsunami_colorless, "#F94336"));
-        arrayList.add(new Item(getString(R.string.home_remedies), R.drawable.medical, "#0A9B88"));
-        arrayList.add(new Item(getString(R.string.hospital), R.drawable.map_colourless, "#0A9B88"));
-        arrayList.add(new Item(getString(R.string.predict_loss), R.drawable.danger, "#3E51B1"));
-
+        arrayList.add(new Item(getString(R.string.chat_doctor), R.drawable.ic_doctor, "#ffffff"));
+        arrayList.add(new Item(getString(R.string.test_ai), R.drawable.ic_ai_testing, "#ffffff"));
+        arrayList.add(new Item(getString(R.string.chatbot), R.drawable.ic_chat_bot , "#ffffff"));
+        arrayList.add(new Item(getString(R.string.news_water), R.drawable.ic_newspaper, "#ffffff"));
+        arrayList.add(new Item(getString(R.string.is_safe), R.drawable.tsunami_colorless, "#ffffff"));
+        arrayList.add(new Item(getString(R.string.home_remedies), R.drawable.medical, "#ffffff"));
+        arrayList.add(new Item(getString(R.string.hospital), R.drawable.ic_nearest_hosp, "#ffffff"));
+        arrayList.add(new Item(getString(R.string.heatmap), R.drawable.ic_heatmap, "#ffffff"));
 
         MenuAdapter menuAdapter = new MenuAdapter(this, arrayList, this);
         recyclerView.setAdapter(menuAdapter);

@@ -116,6 +116,6 @@
     <string name="is_safe">Is Place Safe</string>
     <string name="home_remedies">Home Remedies</string>
     <string name="hospital">Nearest Hospital</string>
-    <string name="predict_loss">Prediction of loss</string>
+    <string name="heatmap">Detected Cases in Area</string>
     <string name="submit_text">Submit</string>
 </resources>

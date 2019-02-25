@@ -2,7 +2,6 @@ package com.example.android.waterborne.Auth;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
 import com.example.android.waterborne.R;
 
 //public class FacebookLoginActivity extends BaseActivity implements

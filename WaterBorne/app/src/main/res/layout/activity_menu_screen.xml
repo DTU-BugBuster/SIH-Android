@@ -2,7 +2,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#FFD700"
+    android:background="#ffffff"
     android:id="@+id/root"
     android:orientation="vertical"
     tools:context=".MenuScreen"
@@ -19,7 +19,7 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         app:contentInsetStart="0dp"
-        android:background="#D3D3D3"
+        android:background="@color/colorPrimary"
         style="@style/Toolbar">
 
         <ImageView
@@ -39,7 +39,8 @@
     <include
         layout="@layout/content_menu"
         android:layout_width="match_parent"
-        android:layout_height="513dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="70dp"
         app:layout_constraintBottom_toBottomOf="parent"

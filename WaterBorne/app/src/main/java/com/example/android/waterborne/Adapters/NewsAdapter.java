@@ -64,7 +64,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.Recycler> {
                 Toast.makeText(context,"News Saved!",Toast.LENGTH_SHORT).show();
             }
         });
-        Picasso.get().load(newsBrief.getNewsImageURL()).placeholder(R.mipmap.ic_launcher).error(R.drawable.notfound).into(holder.newsImg);
+        Picasso.get().load(newsBrief.getNewsImageURL()).placeholder(R.mipmap.ic_face).error(R.drawable.notfound).into(holder.newsImg);
 //        holder.container.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
