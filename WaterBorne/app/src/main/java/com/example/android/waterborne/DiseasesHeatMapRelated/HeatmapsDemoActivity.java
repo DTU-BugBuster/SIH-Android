@@ -3,6 +3,7 @@ package com.example.android.waterborne.DiseasesHeatMapRelated;
 import android.graphics.Color;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,6 +16,11 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.TileOverlay;
 import com.google.android.gms.maps.model.TileOverlayOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.maps.android.heatmaps.Gradient;
 import com.google.maps.android.heatmaps.HeatmapTileProvider;
 
@@ -25,6 +31,7 @@ import org.json.JSONObject;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class HeatmapsDemoActivity extends HeatMapsActivity {
@@ -77,7 +84,7 @@ public class HeatmapsDemoActivity extends HeatMapsActivity {
 
     @Override
     protected void startDemo() {
-        getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(-25, 143), 4));
+        getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(26.8467, 80.9462), 6));
 
         // Set up the spinner/dropdown list
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
@@ -88,10 +95,10 @@ public class HeatmapsDemoActivity extends HeatMapsActivity {
         spinner.setOnItemSelectedListener(new SpinnerActivity());
 
         try {
+            mLists.put(getString(R.string.medicare), new DataSet(getList(),
+                    getString(R.string.medicare_url)));
             mLists.put(getString(R.string.police_stations), new DataSet(readItems(R.raw.police),
                     getString(R.string.police_stations_url)));
-            mLists.put(getString(R.string.medicare), new DataSet(readItems(R.raw.medicare),
-                    getString(R.string.medicare_url)));
         } catch (JSONException e) {
             Toast.makeText(this, "Problem reading list of markers.", Toast.LENGTH_LONG).show();
         }
@@ -100,6 +107,40 @@ public class HeatmapsDemoActivity extends HeatMapsActivity {
         // Input: list of WeightedLatLngs, minimum and maximum zoom levels to calculate custom
         // intensity from, and the map to draw the heatmap on
         // radius, gradient and opacity not specified, so default are used
+    }
+
+    private ArrayList<LatLng> getList() {
+        ArrayList<LatLng> latLngs = new ArrayList<>();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+        DatabaseReference myRef = database.getReference("cases");
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<ReportedCases> rc = new ArrayList<>();
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    ReportedCases post = postSnapshot.getValue(ReportedCases.class);
+                    rc.add(post);
+                }
+                for (int i = 0; i < rc.size(); i++) {
+                    latLngs.add(new LatLng(rc.get(i).addresslat, rc.get(i).addresslng));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("tmz", "Failed to read value.", error.toException());
+            }
+        });
+//        try {
+//            latLngs.addAll(readItems(R.raw.medicare));
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+        return latLngs;
+
     }
 
     public void changeRadius(View view) {

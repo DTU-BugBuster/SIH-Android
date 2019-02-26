@@ -18,8 +18,8 @@ public class SplashActivity extends AppCompatActivity {
 
         final PathView pathView = findViewById(R.id.pathView);
         pathView.getPathAnimator()
-                .delay(1000)
-                .duration(1000)
+                .delay(0000)
+                .duration(0000)
                 .interpolator(new AccelerateDecelerateInterpolator())
                 .start();
 
@@ -34,7 +34,7 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                 finish();
             }
-        }, 3000);
+        }, 0000);
 
     }
 }

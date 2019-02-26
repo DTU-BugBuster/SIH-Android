@@ -19,6 +19,7 @@ import com.example.android.waterborne.Auth.LoginActivity;
 import com.example.android.waterborne.ChatApp.AnonymousChat;
 import com.example.android.waterborne.ChatBotRelated.ChatbotActivity;
 import com.example.android.waterborne.Chatbot.ChatActivity;
+import com.example.android.waterborne.DiseasesHeatMapRelated.HeatmapsDemoActivity;
 import com.example.android.waterborne.HomeRemedies.HomeRemedy;
 import com.example.android.waterborne.IsPlaceSafe.IsPlaceSafeActivity;
 import com.example.android.waterborne.Models.Item;
@@ -238,7 +239,7 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
 
 
         if (item.getText().equals("Chat with a doctor")) {
-            startActivity(new Intent(getBaseContext(), AnonymousChat.class));
+            startActivity(new Intent(getBaseContext(), HeatmapsDemoActivity.class));
         } else if (item.getText().equals("Test with AI")) {
 //            startActivity(new Intent(getBaseContext(),TestWithAI.class));
             Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
