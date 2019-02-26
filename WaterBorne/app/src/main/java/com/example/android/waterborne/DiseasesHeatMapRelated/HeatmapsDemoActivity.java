@@ -114,7 +114,7 @@ public class HeatmapsDemoActivity extends HeatMapsActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
         DatabaseReference myRef = database.getReference("cases");
-
+        Log.d("here2", "cases");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -126,6 +126,23 @@ public class HeatmapsDemoActivity extends HeatMapsActivity {
                 for (int i = 0; i < rc.size(); i++) {
                     latLngs.add(new LatLng(rc.get(i).addresslat, rc.get(i).addresslng));
                 }
+
+                TextView attribution = ((TextView) findViewById(R.id.attribution));
+
+                // Check if need to instantiate (avoid setData etc twice)
+                if (mProvider == null) {
+                    mProvider = new HeatmapTileProvider.Builder().data(
+                            mLists.get(getString(R.string.medicare)).getData()).build();
+                    mOverlay = getMap().addTileOverlay(new TileOverlayOptions().tileProvider(mProvider));
+                    // Render links
+                    attribution.setMovementMethod(LinkMovementMethod.getInstance());
+                } else {
+                    mProvider.setData(latLngs);
+                    mOverlay.clearTileCache();
+                }
+                // Update attribution
+                attribution.setText(Html.fromHtml(String.format(getString(R.string.attrib_format),
+                        "")));
             }
 
             @Override
@@ -134,11 +151,7 @@ public class HeatmapsDemoActivity extends HeatMapsActivity {
                 Log.w("tmz", "Failed to read value.", error.toException());
             }
         });
-//        try {
-//            latLngs.addAll(readItems(R.raw.medicare));
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
+
         return latLngs;
 
     }
@@ -177,24 +190,6 @@ public class HeatmapsDemoActivity extends HeatMapsActivity {
     public class SpinnerActivity implements AdapterView.OnItemSelectedListener {
         public void onItemSelected(AdapterView<?> parent, View view,
                                    int pos, long id) {
-            String dataset = parent.getItemAtPosition(pos).toString();
-
-            TextView attribution = ((TextView) findViewById(R.id.attribution));
-
-            // Check if need to instantiate (avoid setData etc twice)
-            if (mProvider == null) {
-                mProvider = new HeatmapTileProvider.Builder().data(
-                        mLists.get(getString(R.string.police_stations)).getData()).build();
-                mOverlay = getMap().addTileOverlay(new TileOverlayOptions().tileProvider(mProvider));
-                // Render links
-                attribution.setMovementMethod(LinkMovementMethod.getInstance());
-            } else {
-                mProvider.setData(mLists.get(dataset).getData());
-                mOverlay.clearTileCache();
-            }
-            // Update attribution
-            attribution.setText(Html.fromHtml(String.format(getString(R.string.attrib_format),
-                    mLists.get(dataset).getUrl())));
 
         }
 
