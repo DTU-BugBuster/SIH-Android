@@ -23,6 +23,7 @@ import com.example.android.waterborne.HomeRemedies.HomeRemedy;
 import com.example.android.waterborne.IsPlaceSafe.IsPlaceSafeActivity;
 import com.example.android.waterborne.Models.Item;
 import com.example.android.waterborne.NearbyHospitalsRelated.NearbyHospitalsActivity;
+import com.example.android.waterborne.TakeSurvey.TakeSurveyActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.mxn.soul.flowingdrawer_core.FlowingDrawer;
 import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
@@ -95,6 +96,7 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
         arrayList.add(new Item(getString(R.string.home_remedies), R.drawable.medical, "#0A9B88"));
         arrayList.add(new Item(getString(R.string.hospital), R.drawable.map_colourless, "#0A9B88"));
         arrayList.add(new Item(getString(R.string.predict_loss), R.drawable.danger, "#3E51B1"));
+        arrayList.add(new Item("Take a survey",R.drawable.survey,"#3E51B1"));
 
 
         MenuAdapter menuAdapter = new MenuAdapter(this, arrayList, this);
@@ -235,7 +237,7 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
 
     @Override
     public void onItemClick(Item item) {
-        Toast.makeText(getApplicationContext(), item.text + " is clicked", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), item.text + " is clicked", Toast.LENGTH_SHORT).show();
 
 
         if (item.getText().equals("Chat with a doctor")) {
@@ -259,8 +261,11 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
         } else if (item.getText().equals("Prediction of loss")) {
 //            startActivity(new Intent(getBaseContext(),PredictLoss.class));
             Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
+        } else if(item.getText().equals("Take a survey")){
+            startActivity(new Intent(getBaseContext(),TakeSurveyActivity.class));
+        }
 
-        } else {
+        else {
             Toast.makeText(this, "Error !", Toast.LENGTH_SHORT).show();
         }
     }
