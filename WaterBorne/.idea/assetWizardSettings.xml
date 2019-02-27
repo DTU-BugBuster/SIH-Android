@@ -169,8 +169,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_ai_testing" />
-                            <entry key="sourceFile" value="$PROJECT_DIR$/../../SIH/SIH_icons/ai_testing.svg" />
+                            <entry key="outputName" value="ic_microphone" />
+                            <entry key="sourceFile" value="$PROJECT_DIR$/../../SIH/SIH_icons/microphone.svg" />
                           </map>
                         </option>
                       </PersistentState>
