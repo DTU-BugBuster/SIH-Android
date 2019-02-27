@@ -1,7 +1,12 @@
 package com.example.android.waterborne;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -25,6 +30,7 @@ import com.example.android.waterborne.HomeRemedies.HomeRemedy;
 import com.example.android.waterborne.IsPlaceSafe.IsPlaceSafeActivity;
 import com.example.android.waterborne.Models.Item;
 import com.example.android.waterborne.NearbyHospitalsRelated.NearbyHospitalsActivity;
+import com.github.tbouron.shakedetector.library.ShakeDetector;
 import com.google.firebase.auth.FirebaseAuth;
 import com.mxn.soul.flowingdrawer_core.FlowingDrawer;
 import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
@@ -41,7 +47,7 @@ import java.util.Date;
 
 import me.itangqi.waveloadingview.WaveLoadingView;
 
-public class MenuScreen extends AppCompatActivity implements View.OnClickListener, MenuAdapter.ItemListener{
+public class MenuScreen extends AppCompatActivity implements View.OnClickListener, MenuAdapter.ItemListener, ShakeDetector.OnShakeListener {
 
     private static final long RIPPLE_DURATION = 250;
     Button tvchat;
@@ -74,7 +80,7 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
     Toolbar toolbar;
     FrameLayout root;
     View contentHamburger;
-
+    static boolean shake = true;
     static int imageResourceIndex = 0;
     static int str = 0;
     @Override
@@ -136,6 +142,17 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
         tvpaytm.setOnClickListener(this);
         tvhosp.setOnClickListener(this);
         tvsignout.setOnClickListener(this);
+
+        if (ShakeDetector.create(this, this)) {
+//            final float sensibility = (float) (mSensibility.getProgress() + 10) / 10;
+//            ShakeDetector.updateConfiguration(sensibility, mShakeNumber.getProgress());
+            ;
+
+            Toast.makeText(this, "Shake to call activated", Toast.LENGTH_SHORT).show();
+
+        } else {
+            Toast.makeText(this, "Shake to call disabled", Toast.LENGTH_SHORT).show();
+        }
 
 
     }
@@ -223,7 +240,23 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
     }
 
     public void hosp(View v) {
-        startActivity(new Intent(this,NearbyHospitalsActivity.class));
+//        startActivity(new Intent(this,NearbyHospitalsActivity.class));
+
+        if (shake){
+            shake = false;
+            Toast.makeText(this, "Shake to call disabled", Toast.LENGTH_SHORT).show();
+            ShakeDetector.destroy();
+            v.setBackgroundColor(Color.rgb(255,0,0));
+
+        }
+        else{
+            shake = true;
+            Toast.makeText(this, "Shake to call enabled", Toast.LENGTH_SHORT).show();
+            ShakeDetector.create(this, this);
+            v.setBackgroundColor(Color.parseColor("#19783b"));
+
+        }
+
     }
     public void paytm(View v) {
         Toast.makeText(this,"Paytm ",Toast.LENGTH_SHORT).show();
@@ -265,5 +298,35 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
         }else {
             Toast.makeText(this, item.getText(), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void OnShake() {
+        if(checkPhonePermission()){
+            if(shake) {
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "8851506992"));
+                startActivity(intent);
+            }
+
+        }
+        else{
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.READ_CONTACTS}, 123);
+
+        }
+
+    }
+
+
+    public boolean checkPhonePermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 123);
+            }
+            return false;
+
+        } else
+            return true;
     }
 }
