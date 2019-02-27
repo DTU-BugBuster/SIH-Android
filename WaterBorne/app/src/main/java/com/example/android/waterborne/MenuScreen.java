@@ -19,6 +19,7 @@ import com.example.android.waterborne.Auth.LoginActivity;
 import com.example.android.waterborne.ChatApp.AnonymousChat;
 import com.example.android.waterborne.ChatBotRelated.ChatbotActivity;
 import com.example.android.waterborne.Chatbot.ChatActivity;
+import com.example.android.waterborne.DiseasesHeatMapRelated.HeatMapsActivity;
 import com.example.android.waterborne.DiseasesHeatMapRelated.HeatmapsDemoActivity;
 import com.example.android.waterborne.HomeRemedies.HomeRemedy;
 import com.example.android.waterborne.IsPlaceSafe.IsPlaceSafeActivity;
@@ -239,7 +240,7 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
 
 
         if (item.getText().equals("Chat with a doctor")) {
-            startActivity(new Intent(getBaseContext(), HeatmapsDemoActivity.class));
+            startActivity(new Intent(getBaseContext(), AnonymousChat.class));
         } else if (item.getText().equals("Test with AI")) {
 //            startActivity(new Intent(getBaseContext(),TestWithAI.class));
             Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
@@ -259,9 +260,10 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
         } else if (item.getText().equals("Prediction of loss")) {
 //            startActivity(new Intent(getBaseContext(),PredictLoss.class));
             Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
-
-        } else {
-            Toast.makeText(this, "Error !", Toast.LENGTH_SHORT).show();
+        } else if(item.getText().equals("Detected Cases in Area")){
+            startActivity(new Intent(getBaseContext(), HeatmapsDemoActivity.class));
+        }else {
+            Toast.makeText(this, item.getText(), Toast.LENGTH_SHORT).show();
         }
     }
 }
