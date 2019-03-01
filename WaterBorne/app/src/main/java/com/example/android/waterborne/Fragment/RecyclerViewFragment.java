@@ -13,33 +13,41 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.android.waterborne.Adapters.TestRecyclerViewAdapter;
+import com.example.android.waterborne.HomeRemedies.HomeRemedy;
+import com.example.android.waterborne.Models.HomeRemedyModel;
 import com.example.android.waterborne.R;
 import com.github.florent37.materialviewpager.header.MaterialViewPagerHeaderDecorator;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link RecyclerViewFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link RecyclerViewFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class RecyclerViewFragment extends Fragment {
 
-    private static final boolean GRID_LAYOUT = false;
-    private static final int ITEM_COUNT = 5;
+    private static final int ITEM_COUNT = 1;
+    public static ArrayList<String> headings;
+    public static ArrayList<String> descriptions;
 
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
 
     public static RecyclerViewFragment newInstance() {
+
+        headings = new ArrayList<String>();
+        descriptions = new ArrayList<>();
+
+        for (int i=0; i  < 4; i++){
+            headings.add("Heading " + i + 1);
+            descriptions.add("Description " + i + 1);
+        }
+
         return new RecyclerViewFragment();
+
+
     }
 
     @Override
@@ -52,20 +60,15 @@ public class RecyclerViewFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
 
-        final List<Object> items = new ArrayList<>();
+        final ArrayList<HomeRemedyModel> items = new ArrayList<HomeRemedyModel>();
 
         for (int i = 0; i < ITEM_COUNT; ++i) {
-            items.add(new Object());
+            items.add(new HomeRemedyModel(descriptions.get(HomeRemedy.currentPosition),headings.get(HomeRemedy.currentPosition)));
         }
 
 
-        //setup materialviewpager
-
-        if (GRID_LAYOUT) {
-            mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-        } else {
             mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        }
+
         mRecyclerView.setHasFixedSize(true);
 
         //Use this now

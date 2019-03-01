@@ -21,17 +21,12 @@ public class TestListViewAdapter extends ArrayAdapter<Object> {
 
     @Override
     public int getItemViewType(int position) {
-        switch (position) {
-            case 0:
-                return TYPE_HEADER;
-            default:
-                return TYPE_CELL;
-        }
+        return 0;
     }
 
     @Override
     public int getViewTypeCount() {
-        return 2;
+        return 1;
     }
 
     @Override
