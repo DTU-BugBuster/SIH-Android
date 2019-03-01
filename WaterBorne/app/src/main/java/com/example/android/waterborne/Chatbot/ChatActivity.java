@@ -117,7 +117,7 @@ public class ChatActivity extends AppCompatActivity {
     public void ServerChat(JSONObject res) {
         try {
             Recieved = (res.getString("message"));
-            Log.d("nfndskjfnjkdsn   ", Recieved);
+            Log.d("nfndskjfnjkdsn", Recieved);
             chatArrayAdapter.remove((ChatMessage) chatArrayAdapter.chatList.getItemAtPosition(chatArrayAdapter.getCount() - 1));
             chatArrayAdapter.notifyDataSetChanged();
 

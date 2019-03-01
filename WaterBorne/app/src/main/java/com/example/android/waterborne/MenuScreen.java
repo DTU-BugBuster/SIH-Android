@@ -95,7 +95,7 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         arrayList = new ArrayList<>();
 
-        arrayList.add(new Item(getString(R.string.chat_doctor), R.drawable.ic_doctor, "#ffffff"));
+//        arrayList.add(new Item(getString(R.string.chat_doctor), R.drawable.ic_doctor, "#ffffff"));
         arrayList.add(new Item(getString(R.string.test_ai), R.drawable.ic_ai_testing, "#ffffff"));
         arrayList.add(new Item(getString(R.string.chatbot), R.drawable.ic_chat_bot , "#ffffff"));
         arrayList.add(new Item(getString(R.string.news_water), R.drawable.ic_newspaper, "#ffffff"));
@@ -272,19 +272,17 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
         Toast.makeText(getApplicationContext(), item.text + " is clicked", Toast.LENGTH_SHORT).show();
 
 
-        if (item.getText().equals("Chat with a doctor")) {
-            startActivity(new Intent(getBaseContext(), AnonymousChat.class));
-        } else if (item.getText().equals("Test with AI")) {
-//            startActivity(new Intent(getBaseContext(),TestWithAI.class));
-            Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
-        } else if (item.getText().equals("Chatbot")) {
+//        if (item.getText().equals("Test with AI")) {
+////            startActivity(new Intent(getBaseContext(),TestWithAI.class));
+//            Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
+//        } else
+            if (item.getText().equals("Chatbot")) {
             startActivity(new Intent(getBaseContext(), ChatActivity.class));
         } else if (item.getText().equals("News")) {
             startActivity(new Intent(getBaseContext(),NewsActivity.class));
             Toast.makeText(this, "Will add in next version", Toast.LENGTH_SHORT).show();
         } else if (item.getText().equals("Is Place Safe")) {
             startActivity(new Intent(getBaseContext(),IsPlaceSafeActivity.class));
-            Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
         } else if (item.getText().equals("Home Remedies")) {
             startActivity(new Intent(getBaseContext(),HomeRemedy.class));
             Toast.makeText(this, "Will add in next version", Toast.LENGTH_SHORT).show();
@@ -292,7 +290,6 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
             startActivity(new Intent(getBaseContext(), NearbyHospitalsActivity.class));
         } else if (item.getText().equals("Prediction of loss")) {
 //            startActivity(new Intent(getBaseContext(),PredictLoss.class));
-            Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
         } else if(item.getText().equals("Detected Cases in Area")){
             startActivity(new Intent(getBaseContext(), HeatmapsDemoActivity.class));
         }else {
