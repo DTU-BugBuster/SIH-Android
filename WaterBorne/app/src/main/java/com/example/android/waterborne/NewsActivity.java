@@ -36,7 +36,7 @@ public class NewsActivity extends AppCompatActivity //implements NavigationView.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
         recyclerView = findViewById(R.id.RecycleNewsHealth);
-        String url = "https://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=704e22f755d64beea5360a1d8dd6509e";
+        String url = "https://newsapi.org/v2/top-headlines?country=in&category=water&apiKey=704e22f755d64beea5360a1d8dd6509e";
         makeConnection(url);
     }
 

@@ -46,4 +46,10 @@
         <item>@color/fourth</item>
 
     </array>
+
+    <color name="circular_textview_background">#FF0000</color>
+    <color name="color_url">#2246e7</color>
+    <color name="place_autocomplete_prediction_primary_text_highlight">#757575</color>
+    <color name="cast_libraries_material_featurehighlight_text_header_color">#FFFFFFFF</color>
+    <color name="colourCall">#039233</color>
 </resources>

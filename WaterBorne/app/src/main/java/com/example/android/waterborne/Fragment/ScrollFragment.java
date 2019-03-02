@@ -24,7 +24,7 @@ import butterknife.ButterKnife;
  * Use the {@link ScrollFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ScrollFragment  extends Fragment {
+public class ScrollFragment extends Fragment {
 
     @BindView(R.id.scrollView)
     NestedScrollView mScrollView;

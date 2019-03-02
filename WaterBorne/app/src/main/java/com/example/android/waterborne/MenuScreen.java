@@ -25,6 +25,7 @@ import com.example.android.waterborne.Auth.SignupActivity;
 import com.example.android.waterborne.ChatApp.AnonymousChat;
 import com.example.android.waterborne.ChatBotRelated.ChatbotActivity;
 import com.example.android.waterborne.Chatbot.ChatActivity;
+import com.example.android.waterborne.DiseasesHeatMapRelated.HeatMapsActivity;
 import com.example.android.waterborne.DiseasesHeatMapRelated.HeatmapsDemoActivity;
 import com.example.android.waterborne.HomeRemedies.HomeRemedy;
 import com.example.android.waterborne.IsPlaceSafe.IsPlaceSafeActivity;
@@ -94,7 +95,7 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         arrayList = new ArrayList<>();
 
-        arrayList.add(new Item(getString(R.string.chat_doctor), R.drawable.ic_doctor, "#ffffff"));
+//        arrayList.add(new Item(getString(R.string.chat_doctor), R.drawable.ic_doctor, "#ffffff"));
         arrayList.add(new Item(getString(R.string.test_ai), R.drawable.ic_ai_testing, "#ffffff"));
         arrayList.add(new Item(getString(R.string.chatbot), R.drawable.ic_chat_bot , "#ffffff"));
         arrayList.add(new Item(getString(R.string.news_water), R.drawable.ic_newspaper, "#ffffff"));
@@ -299,13 +300,14 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
             Toast.makeText(this, "Will add in next version", Toast.LENGTH_SHORT).show();
         } else if (item.getText().equals("Is Place Safe") || item.getText().equals("जगह सुरक्षित है")) {
             startActivity(new Intent(getBaseContext(),IsPlaceSafeActivity.class));
+
 //            Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
            ;
         } else if (item.getText().equals("Home Remedies") || item.getText().equals("घरेलू उपचार")) {
             startActivity(new Intent(getBaseContext(),HomeRemedy.class));
             Toast.makeText(this, "Will add in next version", Toast.LENGTH_SHORT).show();
         } else if (item.getText().equals("Nearest Hospital") || item.getText().equals("नजदीकी अस्पताल")) {
-            startActivity(new Intent(getBaseContext(), NearbyHospitalsActivity.class));
+            startActivity(new Intent(getBaseContext(), MapsActivity.class));
         } else if (item.getText().equals("Prediction of loss") || item.getText().equals("नुकसान की भविष्यवाणी")) {
 //            startActivity(new Intent(getBaseContext(),PredictLoss.class));
 //            Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
