@@ -17,6 +17,7 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.waterborne.Adapters.MenuAdapter;
@@ -94,15 +95,30 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         arrayList = new ArrayList<>();
 
-        arrayList.add(new Item(getString(R.string.chat_doctor), R.drawable.ic_doctor, "#ffffff"));
-        arrayList.add(new Item(getString(R.string.test_ai), R.drawable.ic_ai_testing, "#ffffff"));
-        arrayList.add(new Item(getString(R.string.chatbot), R.drawable.ic_chat_bot , "#ffffff"));
-        arrayList.add(new Item(getString(R.string.news_water), R.drawable.ic_newspaper, "#ffffff"));
-        arrayList.add(new Item(getString(R.string.is_safe), R.drawable.tsunami_colorless, "#ffffff"));
-        arrayList.add(new Item("Provide some input",R.drawable.form,"#ffffff"));
-        arrayList.add(new Item(getString(R.string.home_remedies), R.drawable.medical, "#ffffff"));
-        arrayList.add(new Item(getString(R.string.hospital), R.drawable.ic_nearest_hosp, "#ffffff"));
-        arrayList.add(new Item(getString(R.string.heatmap), R.drawable.ic_heatmap, "#ffffff"));
+        if (SignupActivity.switchNumber == 0){
+
+            arrayList.add(new Item(getString(R.string.chat_doctor), R.drawable.ic_doctor, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.test_ai), R.drawable.ic_ai_testing, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.chatbot), R.drawable.ic_chat_bot , "#ffffff"));
+            arrayList.add(new Item(getString(R.string.news_water), R.drawable.ic_newspaper, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.is_safe), R.drawable.tsunami_colorless, "#ffffff"));
+            arrayList.add(new Item("Provide some input",R.drawable.form,"#ffffff"));
+            arrayList.add(new Item(getString(R.string.home_remedies), R.drawable.medical, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.hospital), R.drawable.ic_nearest_hosp, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.heatmap), R.drawable.ic_heatmap, "#ffffff"));
+        }
+        else{
+
+            arrayList.add(new Item(getString(R.string.chat_doctor_h), R.drawable.ic_doctor, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.test_ai_h), R.drawable.ic_ai_testing, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.chatbot_h), R.drawable.ic_chat_bot , "#ffffff"));
+            arrayList.add(new Item(getString(R.string.news_water_h), R.drawable.ic_newspaper, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.is_safe_h), R.drawable.tsunami_colorless, "#ffffff"));
+            arrayList.add(new Item("Provide some input",R.drawable.form,"#ffffff"));
+            arrayList.add(new Item(getString(R.string.home_remedies_h), R.drawable.medical, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.hospital_h), R.drawable.ic_nearest_hosp, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.heatmap_h), R.drawable.ic_heatmap, "#ffffff"));
+        }
 
         MenuAdapter menuAdapter = new MenuAdapter(this, arrayList, this);
         recyclerView.setAdapter(menuAdapter);
@@ -154,7 +170,15 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
             Toast.makeText(this, "Shake to call disabled", Toast.LENGTH_SHORT).show();
         }
 
+        convertToHindi(SignupActivity.switchNumber);
 
+    }
+
+    private void convertToHindi(int switchNumber) {
+       if (switchNumber == 0)
+           return;
+        TextView tvMenuscreenHeading = findViewById(R.id.tvMenuscreenHeading);
+        tvMenuscreenHeading.setText("जल जनित");
     }
 
     @Override
