@@ -31,10 +31,9 @@ import org.json.JSONObject;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
-public class HeatmapsDemoActivity extends HeatMapsActivity {
+public class HeatmapsDemoActivity extends HeatMapsActivity implements DiseaseCountSheet.BottomSheetListener {
     /**
      * Alternative radius for convolution
      */
@@ -49,6 +48,7 @@ public class HeatmapsDemoActivity extends HeatMapsActivity {
      * Alternative heatmap gradient (blue -> red)
      * Copied from Javascript version
      */
+    public static ArrayList<ReportedCases> rc_mod;
     private static final int[] ALT_HEATMAP_GRADIENT_COLORS = {
             Color.argb(0, 0, 255, 255),// transparent
             Color.argb(255 / 3 * 2, 0, 255, 255),
@@ -56,7 +56,7 @@ public class HeatmapsDemoActivity extends HeatMapsActivity {
             Color.rgb(0, 0, 127),
             Color.rgb(255, 0, 0)
     };
-
+    ArrayList<ReportedCases> rc = new ArrayList<>();
     public static final float[] ALT_HEATMAP_GRADIENT_START_POINTS = {
             0.0f, 0.10f, 0.20f, 0.60f, 1.0f
     };
@@ -80,6 +80,32 @@ public class HeatmapsDemoActivity extends HeatMapsActivity {
     @Override
     protected int getLayoutId() {
         return R.layout.activity_heatmaps_demo;
+    }
+
+    private double factor = 0.04;
+
+    @Override
+    protected void showBottomInfo(LatLng point) {
+        rc_mod = new ArrayList<>();
+        double lat1 = point.latitude - factor;
+        double lat2 = point.latitude + factor;
+        double lng1 = point.longitude - factor;
+        double lng2 = point.longitude + factor;
+        int count = 0;
+        if (rc.size() != 0) {
+            for (ReportedCases report : rc) {
+                if (Double.valueOf(report.getAddresslat()) < lat2 && Double.valueOf(report.getAddresslat()) > lat1 && Double.valueOf(report.getAddresslng()) < lng2 && Double.valueOf(report.getAddresslng()) > lng1) {
+                    count++;
+                    rc_mod.add(report);
+                }
+            }
+        }
+
+        DiseaseCountSheet bottomSheet = new DiseaseCountSheet();
+
+        bottomSheet.show(getSupportFragmentManager(), "exampleBottomSheet");
+
+        Toast.makeText(this, String.valueOf(count), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -119,7 +145,6 @@ public class HeatmapsDemoActivity extends HeatMapsActivity {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                ArrayList<ReportedCases> rc = new ArrayList<>();
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     ReportedCases post = postSnapshot.getValue(ReportedCases.class);
                     rc.add(post);
@@ -187,6 +212,12 @@ public class HeatmapsDemoActivity extends HeatMapsActivity {
         mDefaultOpacity = !mDefaultOpacity;
     }
 
+    @Override
+    public void onButtonClicked(String text) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
+
+
     // Dealing with spinner choices
     public class SpinnerActivity implements AdapterView.OnItemSelectedListener {
         public void onItemSelected(AdapterView<?> parent, View view,
@@ -234,4 +265,6 @@ public class HeatmapsDemoActivity extends HeatMapsActivity {
             return mUrl;
         }
     }
+
+
 }
