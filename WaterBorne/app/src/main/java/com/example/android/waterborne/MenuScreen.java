@@ -323,7 +323,7 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
             Toast.makeText(getApplicationContext(), item.text + " क्लिक किया है", Toast.LENGTH_SHORT).show();
 
         if (item.getText().equals("Chat with a doctor") || item.getText().equals("डॉक्टर से चैट करें")) {
-            startActivity(new Intent(getBaseContext(), HeatmapsDemoActivity.class));
+            startActivity(new Intent(getBaseContext(), AnonymousChat.class));
         } else if (item.getText().equals("Test with AI") || item.getText().equals("एआई के साथ परीक्षण")) {
 //            startActivity(new Intent(getBaseContext(),TestWithAI.class));
             ;
@@ -381,8 +381,20 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
     public boolean checkPhonePermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
 
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 123);
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CALL_PHONE)) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 123);
+            }
+            return false;
+
+        } else
+            return true;
+    }
+
+    public boolean checkReadPermissionPermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 123);
             }
             return false;
 

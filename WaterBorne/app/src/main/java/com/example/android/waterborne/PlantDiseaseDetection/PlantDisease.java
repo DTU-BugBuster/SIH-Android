@@ -11,7 +11,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import com.example.android.waterborne.R;
 
-import com.example.android.waterborne.QuestionnaireActivity;
+import com.example.android.waterborne.PlantDiseaseDetection.PlantDisease;
 
 public class PlantDisease extends AppCompatActivity {
 
