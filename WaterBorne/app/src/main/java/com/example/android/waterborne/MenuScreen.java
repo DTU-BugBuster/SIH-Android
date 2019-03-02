@@ -17,6 +17,7 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.waterborne.Adapters.MenuAdapter;
@@ -31,6 +32,7 @@ import com.example.android.waterborne.HomeRemedies.HomeRemedy;
 import com.example.android.waterborne.IsPlaceSafe.IsPlaceSafeActivity;
 import com.example.android.waterborne.Models.Item;
 import com.example.android.waterborne.NearbyHospitalsRelated.NearbyHospitalsActivity;
+import com.example.android.waterborne.PlantDiseaseDetection.PlantDisease;
 import com.github.tbouron.shakedetector.library.ShakeDetector;
 import com.google.firebase.auth.FirebaseAuth;
 import com.mxn.soul.flowingdrawer_core.FlowingDrawer;
@@ -95,15 +97,32 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         arrayList = new ArrayList<>();
 
-        arrayList.add(new Item(getString(R.string.heatmap), R.drawable.ic_heatmap, "#ffffff"));
-        arrayList.add(new Item(getString(R.string.hospital), R.drawable.ic_nearest_hosp, "#ffffff"));
-        arrayList.add(new Item(getString(R.string.news_water), R.drawable.ic_newspaper, "#ffffff"));
-        arrayList.add(new Item(getString(R.string.chatbot), R.drawable.ic_chat_bot , "#ffffff"));
-        arrayList.add(new Item(getString(R.string.test_ai), R.drawable.ic_ai_testing, "#ffffff"));
-        arrayList.add(new Item(getString(R.string.is_safe), R.drawable.tsunami_colorless, "#ffffff"));
-        arrayList.add(new Item(getString(R.string.home_remedies), R.drawable.medical, "#ffffff"));
+ if (SignupActivity.switchNumber == 0){
 
+            arrayList.add(new Item(getString(R.string.chat_doctor), R.drawable.ic_doctor, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.plant_disease_detection), R.drawable.plant, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.test_ai), R.drawable.ic_ai_testing, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.chatbot), R.drawable.ic_chat_bot , "#ffffff"));
+            arrayList.add(new Item(getString(R.string.news_water), R.drawable.ic_newspaper, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.is_safe), R.drawable.tsunami_colorless, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.input),R.drawable.form,"#ffffff"));
+            arrayList.add(new Item(getString(R.string.home_remedies), R.drawable.medical, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.hospital), R.drawable.ic_nearest_hosp, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.heatmap), R.drawable.ic_heatmap, "#ffffff"));
+        }
+        else{
 
+            arrayList.add(new Item(getString(R.string.chat_doctor_h), R.drawable.ic_doctor, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.plant_disease_detection_h), R.drawable.plant, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.test_ai_h), R.drawable.ic_ai_testing, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.chatbot_h), R.drawable.ic_chat_bot , "#ffffff"));
+            arrayList.add(new Item(getString(R.string.news_water_h), R.drawable.ic_newspaper, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.is_safe_h), R.drawable.tsunami_colorless, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.input_h),R.drawable.form,"#ffffff"));
+            arrayList.add(new Item(getString(R.string.home_remedies_h), R.drawable.medical, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.hospital_h), R.drawable.ic_nearest_hosp, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.heatmap_h), R.drawable.ic_heatmap, "#ffffff"));
+        }
         MenuAdapter menuAdapter = new MenuAdapter(this, arrayList, this);
         recyclerView.setAdapter(menuAdapter);
         GridLayoutManager manager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
@@ -154,7 +173,23 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
             Toast.makeText(this, "Shake to call disabled", Toast.LENGTH_SHORT).show();
         }
 
+        convertToHindi(SignupActivity.switchNumber);
 
+    }
+
+    private void convertToHindi(int switchNumber) {
+       if (switchNumber == 0)
+           return;
+        TextView tvMenuscreenHeading = findViewById(R.id.tvMenuscreenHeading);
+        tvMenuscreenHeading.setText("जल जनित");
+        Button tvHosp = findViewById(R.id.tvhosp);
+        tvHosp.setText(getString(R.string.shake_to_call_h));
+
+        Button tvpaytm = findViewById(R.id.tvpaytm);
+        tvpaytm.setText(getText(R.string.paytm_karo_h));
+
+        Button signOut = findViewById(R.id.tvsignout);
+        signOut.setText(getString(R.string.sign_out_h));
     }
 
     @Override
@@ -288,14 +323,16 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
             Toast.makeText(getApplicationContext(), item.text + " क्लिक किया है", Toast.LENGTH_SHORT).show();
 
         if (item.getText().equals("Chat with a doctor") || item.getText().equals("डॉक्टर से चैट करें")) {
-            startActivity(new Intent(getBaseContext(), HeatmapsDemoActivity.class));
+            startActivity(new Intent(getBaseContext(), AnonymousChat.class));
         } else if (item.getText().equals("Test with AI") || item.getText().equals("एआई के साथ परीक्षण")) {
 //            startActivity(new Intent(getBaseContext(),TestWithAI.class));
             ;
 //            Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
-        } else if (item.getText().equals("Chatbot")) {
+        } else if (item.getText().equals("Chatbot") || item.getText().equals("चैट बॉट")) {
             startActivity(new Intent(getBaseContext(), ChatActivity.class));
-        } else if (item.getText().equals("News") || item.getText().equals("समाचार")) {
+        }else if (item.getText().equals("Plant Disease Detection") || item.getText().equals("पादप रोग का पता लगाना")) {
+            startActivity(new Intent(getBaseContext(), PlantDisease.class));
+        }else if (item.getText().equals("News") || item.getText().equals("समाचार")) {
             startActivity(new Intent(getBaseContext(),NewsActivity.class));
             Toast.makeText(this, "Will add in next version", Toast.LENGTH_SHORT).show();
         } else if (item.getText().equals("Is Place Safe") || item.getText().equals("जगह सुरक्षित है")) {
@@ -313,6 +350,9 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
 //            Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
         }else if (item.getText().equals("Detected Cases in Area")){
             startActivity(new Intent(this, HeatmapsDemoActivity.class));
+           ;
+        } else if(item.getText().equals("Provide some input") || item.getText().equals("कुछ इनपुट दें")){
+            startActivity(new Intent(getBaseContext(),QuestionnaireActivity.class));
         }
         else {
             if (SignupActivity.switchNumber == 0)
@@ -343,8 +383,20 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
     public boolean checkPhonePermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
 
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 123);
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CALL_PHONE)) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 123);
+            }
+            return false;
+
+        } else
+            return true;
+    }
+
+    public boolean checkReadPermissionPermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 123);
             }
             return false;
 

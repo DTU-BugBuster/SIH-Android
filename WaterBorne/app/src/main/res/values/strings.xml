@@ -80,22 +80,35 @@
     <string name="hint_verification_code">Verification Code</string>
     <string name="hint_verification_code_h">Verification Code</string>
     <string name="status_code_sent">Code Sent</string>
-    <string name="status_code_sent_h">Code Sent</string>
+    <string name="status_code_sent_h">कोड भेज दिया</string>
     <string name="status_verification_failed">Verification failed</string>
+    <string name="status_verification_failed_h">सत्यापन में विफल</string>
     <string name="status_verification_succeeded">Verification succeeded</string>
+    <string name="status_verification_succeeded_h">सत्यापन सफल हुआd</string>
     <string name="status_sign_in_failed">Sign-in failed</string>
-
+    <string name="status_sign_in_failed_h">भाग लेना विफल हुआ</string>
     <string name="phone_title_text">Phone Number</string>
-    <string name="instant_validation">(instant validation)</string>
+    <string name="phone_title_text_h">फ़ोन नंबर</string>
+    <string name="instant_validation">instant validation</string>
+    <string name="instant_validation_h">तुरंत सत्यापन</string>
     <string name="firebase_status_fmt">Firebase User: %s</string>
+    <string name="firebase_status_fmt_h">Firebase User: %s</string>
     <string name="google_status_fmt">Google User : %s</string>
+    <string name="google_status_fmt_h">Google User : %s</string>
     <string name="action_settings">Settings</string>
+    <string name="action_settings_h">सेटिंग्स</string>
     <string name="title_activity_menuscreen">Krishi Sewa</string>
+    <string name="title_activity_menuscreen_h">कृषि सेवा</string>
     <string name="ham">h</string>
+    <string name="ham_h">ज</string>
     <string name="bill">Billing</string>
+    <string name="bill_h">बिलिंग</string>
     <string name="order">Orders</string>
+    <string name="order_h">आदेश</string>
     <string name="close">Closing Balance</string>
+    <string name="close_h">समाप्ति के समय बकाया</string>
     <string name="sale">Sales Graph</string>
+    <string name="sale_h">बिक्री ग्राफ</string>
     <string name="title_activity_createlisting">createlisting</string>
     <string name="title_activity_orders">orders</string>
     <string name="google_title_text">Google Sign In</string>
@@ -144,14 +157,25 @@
     <string name="title_activity_memes2">memes2Activity</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="chat_doctor">Chat with a doctor</string>
+    <string name="chat_doctor_h">डॉक्टर से चैट करें</string>
     <string name="test_ai">Test with AI</string>
+    <string name="test_ai_h">एआई के साथ परीक्षण</string>
     <string name="chatbot">Chatbot</string>
+    <string name="chatbot_h">चैट बॉट</string>
     <string name="news_water">News</string>
+    <string name="news_water_h">समाचार</string>
     <string name="is_safe">Is Place Safe</string>
+    <string name="input">Provide some input</string>
+    <string name="input_h">कुछ इनपुट दें</string>
+    <string name="is_safe_h">जगह सुरक्षित है ?</string>
     <string name="home_remedies">Home Remedies</string>
+    <string name="home_remedies_h">घरेलू उपचार</string>
     <string name="hospital">Nearest Hospital</string>
+    <string name="hospital_h">नजदीकी अस्पताल</string>
     <string name="heatmap">Detected Cases in Area</string>
+    <string name="heatmap_h">क्षेत्र में मामलों का पता लगाया</string>
     <string name="submit_text">Submit</string>
+    <string name="submit_text_h">जमा करें</string>
 
     <string name="sensibility">Sensibility</string>
     <string name="shake_number">Number of shakes to trigger</string>
@@ -166,7 +190,8 @@
     <string name="device_shaken">Device shaken!</string>
     <string name="update_sensibility">Update \"sensibility\" to: %.1fG</string>
     <string name="update_shake_number">Update \"number of shakes to trigger\" to: %d</string>
-    <string name="title_activity_maps">MedLoco</string>
+
+  <string name="title_activity_maps">MedLoco</string>
     <string name="gps_network_not_enabled">GPS or network services are disabled. Do you wish to enable them? </string>
     <string name="open_location_settings">Enable GPS</string>
     <string name="cancel">Cancel</string>
@@ -185,4 +210,11 @@
         <item>Prominence</item>
         <item>Distance</item>
     </string-array>
+    <string name="shake_to_call">Shake to call</string>
+    <string name="shake_to_call_h">कॉल करने के लिए हिलाएँ</string>
+    <string name="paytm_karo">Paytm Karo!!</string>
+    <string name="paytm_karo_h">पीटीएम करो!!</string>
+    <string name="plant_disease_detection">Plant Disease Detection</string>
+    <string name="plant_disease_detection_h">पादप रोग का पता लगाना</string>
+
 </resources>
