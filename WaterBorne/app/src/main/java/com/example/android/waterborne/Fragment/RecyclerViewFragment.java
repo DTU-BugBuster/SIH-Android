@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-L̥L̥
 
 
 public class RecyclerViewFragment extends Fragment {

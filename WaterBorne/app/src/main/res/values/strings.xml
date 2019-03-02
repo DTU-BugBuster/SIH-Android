@@ -1,11 +1,18 @@
 <resources>
     <string name="app_name">Water Borne</string>
+    <string name="app_name_h">जल जनित</string>
     <string name="what_s_on_your_mind">Enter your query</string>
+    <string name="what_s_on_your_mind_h">अपनी क्वेरी दर्ज करें</string>
     <string name="title_activity_heat_maps">Map</string>
+    <string name="title_activity_heat_maps_h">नक्शा</string>
     <string name="input_text">Looking for…</string>
+    <string name="input_text_h">खोज रहे हैं ...</string>
     <string name="button_send">Go!</string>
+    <string name="button_send_h">चले जाओ!</string>
     <string name="police_stations">Police Stations in Victoria</string>
+    <string name="police_stations_h">विक्टोरिया में पुलिस स्टेशन</string>
     <string name="medicare">Medicare Offices</string>
+    <string name="medicare_h">चिकित्सा कार्यालय</string>
     <string name="attrib_format">Data from &lt;a href = "%s">data.gov.au&lt;/a>, modified under &lt;a href = \"http://creativecommons.org/licenses/by/3.0/au/\">CC BY 3.0 AU&lt;/a></string>
     <string name="police_stations_url">http://data.gov.au/dataset/police-station-locations/resource/76110b24-0f0a-4c29-9583-3f99eaba486c</string>
     <string name="medicare_url">http://data.gov.au/dataset/location-of-medicare-offices/resource/5d38e1be-4011-49c4-8b8b-75405eeb1088</string>
@@ -16,37 +23,64 @@
         <item>@string/medicare</item>
     </string-array>
     <string name="button_radius">Radius</string>
+    <string name="button_radius_h">त्रिज्या</string>
     <string name="button_gradient">Gradient</string>
+    <string name="button_gradient_h">ढाल</string>
     <string name="button_opacity">Opacity</string>
-
+    <string name="button_opacity_h">अस्पष्टता</string>
     <string name="hint_user_id">User ID</string>
+    <string name="hint_user_id_h">यूज़र आईडी</string>
     <string name="get_custom_token">Get Token</string>
+    <string name="get_custom_token_h">टोकन प्राप्त करें</string>
     <string name="sign_in">Sign In</string>
+    <string name="sign_in_h">दाखिल करना</string>
     <string name="create_account">Create Account</string>
+    <string name="create_account_h">खाता बनाएं</string>
     <string name="send_link">Send Link</string>
+    <string name="send_link_h">लिंक भेजें</string>
     <string name="sign_out">Sign Out</string>
+    <string name="sign_out_h">साइन आउट</string>
     <string name="verify_email">Verify Email</string>
+    <string name="verify_email_h">ईमेल सत्यापित करें</string>
     <string name="disconnect">Disconnect</string>
+    <string name="disconnect_h">Disconnect</string>
     <string name="loading">Loading…</string>
+    <string name="loading_h">लोड हो रहा है…</string>
     <string name="custom_token">Custom Token</string>
+    <string name="custom_token_h">कस्टम टोकन</string>
     <string name="profile">ANONYMOUS CHAT</string>
+    <string name="profile_h">अन्नमय रस</string>
     <string name="feed">NEARBY HOSPITALS</string>
+    <string name="feed_h">नजदीकी अस्पताल</string>
     <string name="activity">MindMate</string>
-
     <string name="settings">SETTINGS</string>
+    <string name="settings_h">सेटिंग्स</string>
     <string name="signed_in">Signed In</string>
+    <string name="signed_in_h">साइन इन किया</string>
     <string name="signed_out">Signed Out</string>
+    <string name="signed_out_h">साइन आउट</string>
     <string name="token_null">Token: null</string>
+    <string name="token_null_h">टोकन: अशक्त</string>
     <string name="hint_email">Email</string>
+    <string name="hint_email_h">ईमेल</string>
     <string name="hint_password">Password</string>
+    <string name="hint_password_h">पारण शब्द</string>
     <string name="desc_firebase_lockup">Firebase logo and name</string>
+    <string name="desc_firebase_lockup_h">फायरबेस लोगो और नाम</string>
     <string name="auth_failed">Authentication failed</string>
+    <string name="auth_failed_h">प्रमाणीकरण विफल होना</string>
     <string name="start_phone_auth">Start</string>
+    <string name="start_phone_auth_h">शुरु</string>
     <string name="verify_phone_auth">Verify</string>
+    <string name="verify_phone_auth_h">सत्यापित करें</string>
     <string name="resend_phone_auth">Resend</string>
+    <string name="resend_phone_auth_h">पुन: भेजें</string>
     <string name="hint_phone_number">Phone Number</string>
+    <string name="hint_phone_number_h">फ़ोन नंबर</string>
     <string name="hint_verification_code">Verification Code</string>
+    <string name="hint_verification_code_h">Verification Code</string>
     <string name="status_code_sent">Code Sent</string>
+    <string name="status_code_sent_h">Code Sent</string>
     <string name="status_verification_failed">Verification failed</string>
     <string name="status_verification_succeeded">Verification succeeded</string>
     <string name="status_sign_in_failed">Sign-in failed</string>

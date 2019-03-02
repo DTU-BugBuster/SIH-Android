@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.android.waterborne.Adapters.MenuAdapter;
 import com.example.android.waterborne.Auth.LoginActivity;
+import com.example.android.waterborne.Auth.SignupActivity;
 import com.example.android.waterborne.ChatApp.AnonymousChat;
 import com.example.android.waterborne.ChatBotRelated.ChatbotActivity;
 import com.example.android.waterborne.Chatbot.ChatActivity;
@@ -49,7 +50,7 @@ import me.itangqi.waveloadingview.WaveLoadingView;
 public class MenuScreen extends AppCompatActivity implements View.OnClickListener, MenuAdapter.ItemListener, ShakeDetector.OnShakeListener {
 
     private static final long RIPPLE_DURATION = 250;
-    Button tvchat;
+    Button tvSwitch;
     Button tvpaytm;
     Button tvhosp;
     Button tvsignout;
@@ -57,7 +58,6 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
     private RecyclerView recyclerView;
     private ArrayList<Item> arrayList;
     private FirebaseAuth mAuth;
-
 
     static int[] imageResources = new int[]{
             R.drawable.emotion,
@@ -131,13 +131,13 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
 //        assert li != null;
         View v = LayoutInflater.from(this).inflate(R.layout.guillotine, null);
 
-        tvchat = v.findViewById(R.id.tvchat);
+        tvSwitch = v.findViewById(R.id.tvSwitch);
         tvpaytm = v.findViewById(R.id.tvpaytm);
         tvhosp = v.findViewById(R.id.tvhosp);
         tvsignout = v.findViewById(R.id.tvsignout);
 
 
-        tvchat.setOnClickListener(this);
+        tvSwitch.setOnClickListener(this);
         tvpaytm.setOnClickListener(this);
         tvhosp.setOnClickListener(this);
         tvsignout.setOnClickListener(this);
@@ -219,9 +219,12 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
                 paytm(null);
                 break;
             }
-            case R.id.tvchat:
-            { anonymousChat(null); break;}
+            case R.id.tvSwitch:
+            {
+                SignupActivity.switchNumber = 1 - SignupActivity.switchNumber;
+            }
             case R.id.tvhosp:
+
             {hosp(null); break;}
             case R.id.tvsignout:
             {
@@ -243,14 +246,20 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
 
         if (shake){
             shake = false;
-            Toast.makeText(this, "Shake to call disabled", Toast.LENGTH_SHORT).show();
+            if(SignupActivity.switchNumber == 0)
+               Toast.makeText(this, "Shake to call disabled", Toast.LENGTH_SHORT).show();
+            else
+                Toast.makeText(this, "अक्षम कॉल करने के लिए हिलाएँ", Toast.LENGTH_SHORT).show();
             ShakeDetector.destroy();
             v.setBackgroundColor(Color.rgb(255,0,0));
 
         }
         else{
             shake = true;
-            Toast.makeText(this, "Shake to call enabled", Toast.LENGTH_SHORT).show();
+            if (SignupActivity.switchNumber == 0)
+                Toast.makeText(this, "Shake to call enabled", Toast.LENGTH_SHORT).show();
+            else
+                Toast.makeText(this, "सक्षम कॉल करने के लिए हिला", Toast.LENGTH_SHORT).show();
             ShakeDetector.create(this, this);
             v.setBackgroundColor(Color.parseColor("#19783b"));
 
@@ -258,7 +267,11 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
 
     }
     public void paytm(View v) {
-        Toast.makeText(this,"Paytm ",Toast.LENGTH_SHORT).show();
+        if (SignupActivity.switchNumber == 0)
+            Toast.makeText(this,"Paytm ",Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(this,"Paytm ",Toast.LENGTH_SHORT).show();
+
         startActivity(new Intent(this,PaytmActivity.class));
     }
 
@@ -268,33 +281,41 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
 
     @Override
     public void onItemClick(Item item) {
-        Toast.makeText(getApplicationContext(), item.text + " is clicked", Toast.LENGTH_SHORT).show();
+        if (SignupActivity.switchNumber == 0)
+           Toast.makeText(getApplicationContext(), item.text + " is clicked", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(getApplicationContext(), item.text + " क्लिक किया है", Toast.LENGTH_SHORT).show();
 
-
-        if (item.getText().equals("Chat with a doctor")) {
+        if (item.getText().equals("Chat with a doctor") || item.getText().equals("डॉक्टर से चैट करें")) {
             startActivity(new Intent(getBaseContext(), HeatmapsDemoActivity.class));
-        } else if (item.getText().equals("Test with AI")) {
+        } else if (item.getText().equals("Test with AI") || item.getText().equals("एआई के साथ परीक्षण")) {
 //            startActivity(new Intent(getBaseContext(),TestWithAI.class));
-            Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
+            ;
+//            Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
         } else if (item.getText().equals("Chatbot")) {
             startActivity(new Intent(getBaseContext(), ChatActivity.class));
-        } else if (item.getText().equals("News")) {
+        } else if (item.getText().equals("News") || item.getText().equals("समाचार")) {
             startActivity(new Intent(getBaseContext(),NewsActivity.class));
             Toast.makeText(this, "Will add in next version", Toast.LENGTH_SHORT).show();
-        } else if (item.getText().equals("Is Place Safe")) {
+        } else if (item.getText().equals("Is Place Safe") || item.getText().equals("जगह सुरक्षित है")) {
             startActivity(new Intent(getBaseContext(),IsPlaceSafeActivity.class));
-            Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
-        } else if (item.getText().equals("Home Remedies")) {
+//            Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
+           ;
+        } else if (item.getText().equals("Home Remedies") || item.getText().equals("घरेलू उपचार")) {
             startActivity(new Intent(getBaseContext(),HomeRemedy.class));
             Toast.makeText(this, "Will add in next version", Toast.LENGTH_SHORT).show();
-        } else if (item.getText().equals("Nearest Hospital")) {
+        } else if (item.getText().equals("Nearest Hospital") || item.getText().equals("नजदीकी अस्पताल")) {
             startActivity(new Intent(getBaseContext(), NearbyHospitalsActivity.class));
-        } else if (item.getText().equals("Prediction of loss")) {
+        } else if (item.getText().equals("Prediction of loss") || item.getText().equals("नुकसान की भविष्यवाणी")) {
 //            startActivity(new Intent(getBaseContext(),PredictLoss.class));
-            Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
 
+            ;
         } else {
-            Toast.makeText(this, "Error !", Toast.LENGTH_SHORT).show();
+            if (SignupActivity.switchNumber == 0)
+               Toast.makeText(this, "Error !", Toast.LENGTH_SHORT).show();
+            else
+                Toast.makeText(this, "त्रुटि! नुकसान की", Toast.LENGTH_SHORT).show();
         }
     }
 
