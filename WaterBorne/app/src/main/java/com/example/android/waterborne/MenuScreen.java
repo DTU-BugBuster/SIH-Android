@@ -31,6 +31,7 @@ import com.example.android.waterborne.HomeRemedies.HomeRemedy;
 import com.example.android.waterborne.IsPlaceSafe.IsPlaceSafeActivity;
 import com.example.android.waterborne.Models.Item;
 import com.example.android.waterborne.NearbyHospitalsRelated.NearbyHospitalsActivity;
+import com.example.android.waterborne.PlantDiseaseDetection.PlantDisease;
 import com.github.tbouron.shakedetector.library.ShakeDetector;
 import com.google.firebase.auth.FirebaseAuth;
 import com.mxn.soul.flowingdrawer_core.FlowingDrawer;
@@ -98,6 +99,7 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
         if (SignupActivity.switchNumber == 0){
 
             arrayList.add(new Item(getString(R.string.chat_doctor), R.drawable.ic_doctor, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.plant_disease_detection), R.drawable.plant, "#ffffff"));
             arrayList.add(new Item(getString(R.string.test_ai), R.drawable.ic_ai_testing, "#ffffff"));
             arrayList.add(new Item(getString(R.string.chatbot), R.drawable.ic_chat_bot , "#ffffff"));
             arrayList.add(new Item(getString(R.string.news_water), R.drawable.ic_newspaper, "#ffffff"));
@@ -110,6 +112,7 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
         else{
 
             arrayList.add(new Item(getString(R.string.chat_doctor_h), R.drawable.ic_doctor, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.plant_disease_detection_h), R.drawable.plant, "#ffffff"));
             arrayList.add(new Item(getString(R.string.test_ai_h), R.drawable.ic_ai_testing, "#ffffff"));
             arrayList.add(new Item(getString(R.string.chatbot_h), R.drawable.ic_chat_bot , "#ffffff"));
             arrayList.add(new Item(getString(R.string.news_water_h), R.drawable.ic_newspaper, "#ffffff"));
@@ -327,7 +330,9 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
 //            Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
         } else if (item.getText().equals("Chatbot") || item.getText().equals("चैट बॉट")) {
             startActivity(new Intent(getBaseContext(), ChatActivity.class));
-        } else if (item.getText().equals("News") || item.getText().equals("समाचार")) {
+        }else if (item.getText().equals("Plant Disease Detection") || item.getText().equals("पादप रोग का पता लगाना")) {
+            startActivity(new Intent(getBaseContext(), PlantDisease.class));
+        }else if (item.getText().equals("News") || item.getText().equals("समाचार")) {
             startActivity(new Intent(getBaseContext(),NewsActivity.class));
             Toast.makeText(this, "Will add in next version", Toast.LENGTH_SHORT).show();
         } else if (item.getText().equals("Is Place Safe") || item.getText().equals("जगह सुरक्षित है")) {

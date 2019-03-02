@@ -194,5 +194,7 @@
     <string name="shake_to_call_h">कॉल करने के लिए हिलाएँ</string>
     <string name="paytm_karo">Paytm Karo!!</string>
     <string name="paytm_karo_h">पीटीएम करो!!</string>
+    <string name="plant_disease_detection">Plant Disease Detection</string>
+    <string name="plant_disease_detection_h">पादप रोग का पता लगाना</string>
 
 </resources>
