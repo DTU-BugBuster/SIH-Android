@@ -99,6 +99,7 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
         arrayList.add(new Item(getString(R.string.chatbot), R.drawable.ic_chat_bot , "#ffffff"));
         arrayList.add(new Item(getString(R.string.news_water), R.drawable.ic_newspaper, "#ffffff"));
         arrayList.add(new Item(getString(R.string.is_safe), R.drawable.tsunami_colorless, "#ffffff"));
+        arrayList.add(new Item("Provide some input",R.drawable.form,"#ffffff"));
         arrayList.add(new Item(getString(R.string.home_remedies), R.drawable.medical, "#ffffff"));
         arrayList.add(new Item(getString(R.string.hospital), R.drawable.ic_nearest_hosp, "#ffffff"));
         arrayList.add(new Item(getString(R.string.heatmap), R.drawable.ic_heatmap, "#ffffff"));
@@ -311,7 +312,10 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
 //            Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
 
             ;
-        } else {
+        } else if(item.getText().equals("Provide some input")){
+            startActivity(new Intent(getBaseContext(),QuestionnaireActivity.class));
+        }
+        else {
             if (SignupActivity.switchNumber == 0)
                Toast.makeText(this, "Error !", Toast.LENGTH_SHORT).show();
             else

@@ -68,7 +68,8 @@
         <activity android:name=".HomeRemedies.HomeRemedy" />
         <activity android:name=".IsPlaceSafe.IsPlaceSafeActivity" />
         <activity android:name=".Chatbot.ChatActivity" />
-        <activity android:name=".ShakeActivity"></activity>
+        <activity android:name=".ShakeActivity" />
+        <activity android:name=".QuestionnaireActivity"></activity>
     </application>
 
 </manifest>
