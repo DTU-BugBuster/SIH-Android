@@ -331,8 +331,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             SinglePlace place = placeList.places.get(i);
             destination += place.getLoc().latitude+ "," +place.getLoc().longitude+ "|";
         }
-        SinglePlace place = placeList.places.get(placeList.places.size()-1);
-        destination += place.getLoc().latitude+ "," +place.getLoc().longitude;
+//        SinglePlace place = placeList.places.get(placeList.places.size()-1);
+//        destination += place.getLoc().latitude+ "," +place.getLoc().longitude;
 
 
         HashMap<String,String> params = new HashMap<>();
