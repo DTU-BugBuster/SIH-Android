@@ -11,9 +11,6 @@ import android.widget.TextView;
 import com.example.android.waterborne.DetailActivity;
 import com.example.android.waterborne.Models.SinglePlace;
 import com.example.android.waterborne.R;
-import com.mayank7319gmail.hospitallocator.R;
-import com.mayank7319gmail.hospitallocator.activities.DetailActivity;
-import com.mayank7319gmail.hospitallocator.models.SinglePlace;
 
 import java.util.ArrayList;
 
@@ -21,7 +18,7 @@ import java.util.ArrayList;
  * Created by Mayank Gupta on 18-12-2017.
  */
 
-public class HospitalListRecycler extends RecyclerView.Adapter<HospitalListRecycler.ListHolder>{
+public class HospitalListRecycler extends RecyclerView.Adapter<HospitalListRecycler.ListHolder> {
 
     private ArrayList<SinglePlace> itemList;
     private Context ctx;
@@ -34,7 +31,7 @@ public class HospitalListRecycler extends RecyclerView.Adapter<HospitalListRecyc
     @Override
     public ListHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater li = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View itemView = li.inflate(R.layout.layout_list_item ,parent , false);
+        View itemView = li.inflate(R.layout.layout_list_item, parent, false);
         return new ListHolder(itemView);
     }
 
@@ -43,15 +40,15 @@ public class HospitalListRecycler extends RecyclerView.Adapter<HospitalListRecyc
         final SinglePlace currentItem = itemList.get(position);
 
         String name = currentItem.getName();
-        if(name.length()>25)
-            name = name.substring(0,25);
+        if (name.length() > 25)
+            name = name.substring(0, 25);
 
         holder.tvName.setText(name);
-        holder.tvIcon.setText(currentItem.getName().substring(0,1));
+        holder.tvIcon.setText(currentItem.getName().substring(0, 1));
 
         String address = currentItem.getVicinity();
-        if(address.length()>40)
-            address = address.substring(0,40);
+        if (address.length() > 40)
+            address = address.substring(0, 40);
 
         holder.tvAddress.setText(address);
         holder.tvDistance.setText(currentItem.getDistanceString());
@@ -62,8 +59,8 @@ public class HospitalListRecycler extends RecyclerView.Adapter<HospitalListRecyc
             public void onClick(View v) {
                 Intent i = new Intent(ctx, DetailActivity.class);
                 i.putExtra("placeId", currentItem.getPlaceId());
-                i.putExtra("latitude",currentItem.getLoc().latitude);
-                i.putExtra("longitude",currentItem.getLoc().longitude);
+                i.putExtra("latitude", currentItem.getLoc().latitude);
+                i.putExtra("longitude", currentItem.getLoc().longitude);
                 ctx.startActivity(i);
             }
         });
@@ -74,7 +71,7 @@ public class HospitalListRecycler extends RecyclerView.Adapter<HospitalListRecyc
         return itemList.size();
     }
 
-    public class ListHolder extends RecyclerView.ViewHolder{
+    public class ListHolder extends RecyclerView.ViewHolder {
         TextView tvName, tvAddress, tvIcon, tvTime, tvDistance;
         View itemView;
 

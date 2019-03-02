@@ -287,7 +287,7 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
             startActivity(new Intent(getBaseContext(),HomeRemedy.class));
             Toast.makeText(this, "Will add in next version", Toast.LENGTH_SHORT).show();
         } else if (item.getText().equals("Nearest Hospital")) {
-            startActivity(new Intent(getBaseContext(), NearbyHospitalsActivity.class));
+            startActivity(new Intent(getBaseContext(), MapsActivity.class));
         } else if (item.getText().equals("Prediction of loss")) {
 //            startActivity(new Intent(getBaseContext(),PredictLoss.class));
         } else if(item.getText().equals("Detected Cases in Area")){
