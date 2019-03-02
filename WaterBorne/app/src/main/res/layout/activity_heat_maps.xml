@@ -10,5 +10,4 @@
     map:cameraTargetLat="53.938305"
     map:cameraTargetLng="-112.763672"
     map:cameraTilt="30"
-    map:cameraZoom="2"
     tools:context=".DiseasesHeatMapRelated.HeatMapsActivity" />

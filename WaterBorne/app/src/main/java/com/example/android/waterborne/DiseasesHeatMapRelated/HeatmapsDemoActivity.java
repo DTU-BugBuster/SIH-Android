@@ -37,12 +37,12 @@ public class HeatmapsDemoActivity extends HeatMapsActivity implements DiseaseCou
     /**
      * Alternative radius for convolution
      */
-    private static final int ALT_HEATMAP_RADIUS = 10;
+    private static final int ALT_HEATMAP_RADIUS = 29;
 
     /**
      * Alternative opacity of heatmap overlay
      */
-    private static final double ALT_HEATMAP_OPACITY = 0.4;
+    private static final double ALT_HEATMAP_OPACITY = 0.9;
 
     /**
      * Alternative heatmap gradient (blue -> red)
@@ -50,20 +50,19 @@ public class HeatmapsDemoActivity extends HeatMapsActivity implements DiseaseCou
      */
     public static ArrayList<ReportedCases> rc_mod;
     private static final int[] ALT_HEATMAP_GRADIENT_COLORS = {
-            Color.argb(0, 0, 255, 255),// transparent
-            Color.argb(255 / 3 * 2, 0, 255, 255),
-            Color.rgb(0, 191, 255),
-            Color.rgb(0, 0, 127),
-            Color.rgb(255, 0, 0)
+            Color.argb(255, 255, 255, 255),// transparent
+            Color.argb(255 , 255, 255, 255),
+            Color.rgb(255, 191, 255),
+            Color.rgb(255, 255, 127),
+            Color.rgb(255, 255, 255)
     };
     ArrayList<ReportedCases> rc = new ArrayList<>();
     public static final float[] ALT_HEATMAP_GRADIENT_START_POINTS = {
-            0.0f, 0.10f, 0.20f, 0.60f, 1.0f
+            0.60f, 0.70f, 0.80f, 0.90f, 1.0f
     };
 
     public static final Gradient ALT_HEATMAP_GRADIENT = new Gradient(ALT_HEATMAP_GRADIENT_COLORS,
             ALT_HEATMAP_GRADIENT_START_POINTS);
-
     private HeatmapTileProvider mProvider;
     private TileOverlay mOverlay;
 
@@ -110,7 +109,8 @@ public class HeatmapsDemoActivity extends HeatMapsActivity implements DiseaseCou
 
     @Override
     protected void startDemo() {
-        getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(26.8467, 80.9462), 6));
+        float zoom = getMap().getCameraPosition().zoom;
+        getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(26.8467, 80.9462), zoom));
 
         // Set up the spinner/dropdown list
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
@@ -186,7 +186,7 @@ public class HeatmapsDemoActivity extends HeatMapsActivity implements DiseaseCou
         if (mDefaultRadius) {
             mProvider.setRadius(ALT_HEATMAP_RADIUS);
         } else {
-            mProvider.setRadius(HeatmapTileProvider.DEFAULT_RADIUS);
+            mProvider.setRadius(ALT_HEATMAP_RADIUS);
         }
         mOverlay.clearTileCache();
         mDefaultRadius = !mDefaultRadius;

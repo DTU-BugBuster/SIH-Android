@@ -33,7 +33,6 @@ public abstract class HeatMapsActivity extends FragmentActivity implements OnMap
             mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
                 @Override
                 public void onMapClick(LatLng point) {
-                    Toast.makeText(HeatMapsActivity.this, "11", Toast.LENGTH_SHORT).show();
                 }
             });
         }
