@@ -24,6 +24,7 @@ public class SignupActivity extends AppCompatActivity {
     private static final String TAG = "SignupActivity";
     private FirebaseAuth mAuth;
 
+    public static int switchNumber = 1;
 
     //    @InjectView(R.id.input_name)
     EditText _nameText;
