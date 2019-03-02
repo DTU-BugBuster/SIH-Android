@@ -27,6 +27,7 @@
         <ImageView
             style="@style/ImageView.GuillotineItem"
             android:src="@drawable/anonymous"
+            android:visibility="gone"
             />
 
         <Button
@@ -34,6 +35,7 @@
             android:onClick="anonymousChat"
             android:id="@+id/tvSwitch"
             android:text="Switch to Hindi"
+            android:visibility="gone"
             />
     </LinearLayout>
 
@@ -49,7 +51,7 @@
             style="@style/TextView.GuillotineItem"
              android:id="@+id/tvhosp"
             android:onClick="hosp"
-            android:text="Shake to call" />
+            android:text="@string/shake_to_call" />
     </LinearLayout>
 
     <LinearLayout
@@ -64,7 +66,7 @@
             style="@style/TextView.GuillotineItem"
             android:onClick="paytm"
             android:id="@+id/tvpaytm"
-            android:text="Paytm Karo!!" />
+            android:text="@string/paytm_karo" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/activity_group"
@@ -78,7 +80,7 @@
             style="@style/TextView.GuillotineItem"
             android:onClick="login"
             android:id="@+id/tvsignout"
-            android:text="Sign Out" />
+            android:text="@string/sign_out" />
     </LinearLayout>
 
     <!--<View-->

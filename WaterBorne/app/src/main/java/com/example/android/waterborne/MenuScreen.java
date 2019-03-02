@@ -102,7 +102,7 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
             arrayList.add(new Item(getString(R.string.chatbot), R.drawable.ic_chat_bot , "#ffffff"));
             arrayList.add(new Item(getString(R.string.news_water), R.drawable.ic_newspaper, "#ffffff"));
             arrayList.add(new Item(getString(R.string.is_safe), R.drawable.tsunami_colorless, "#ffffff"));
-            arrayList.add(new Item("Provide some input",R.drawable.form,"#ffffff"));
+            arrayList.add(new Item(getString(R.string.input),R.drawable.form,"#ffffff"));
             arrayList.add(new Item(getString(R.string.home_remedies), R.drawable.medical, "#ffffff"));
             arrayList.add(new Item(getString(R.string.hospital), R.drawable.ic_nearest_hosp, "#ffffff"));
             arrayList.add(new Item(getString(R.string.heatmap), R.drawable.ic_heatmap, "#ffffff"));
@@ -114,7 +114,7 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
             arrayList.add(new Item(getString(R.string.chatbot_h), R.drawable.ic_chat_bot , "#ffffff"));
             arrayList.add(new Item(getString(R.string.news_water_h), R.drawable.ic_newspaper, "#ffffff"));
             arrayList.add(new Item(getString(R.string.is_safe_h), R.drawable.tsunami_colorless, "#ffffff"));
-            arrayList.add(new Item("Provide some input",R.drawable.form,"#ffffff"));
+            arrayList.add(new Item(getString(R.string.input_h),R.drawable.form,"#ffffff"));
             arrayList.add(new Item(getString(R.string.home_remedies_h), R.drawable.medical, "#ffffff"));
             arrayList.add(new Item(getString(R.string.hospital_h), R.drawable.ic_nearest_hosp, "#ffffff"));
             arrayList.add(new Item(getString(R.string.heatmap_h), R.drawable.ic_heatmap, "#ffffff"));
@@ -179,6 +179,14 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
            return;
         TextView tvMenuscreenHeading = findViewById(R.id.tvMenuscreenHeading);
         tvMenuscreenHeading.setText("जल जनित");
+        Button tvHosp = findViewById(R.id.tvhosp);
+        tvHosp.setText(getString(R.string.shake_to_call_h));
+
+        Button tvpaytm = findViewById(R.id.tvpaytm);
+        tvpaytm.setText(getText(R.string.paytm_karo_h));
+
+        Button signOut = findViewById(R.id.tvsignout);
+        signOut.setText(getString(R.string.sign_out_h));
     }
 
     @Override
@@ -317,7 +325,7 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
 //            startActivity(new Intent(getBaseContext(),TestWithAI.class));
             ;
 //            Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
-        } else if (item.getText().equals("Chatbot")) {
+        } else if (item.getText().equals("Chatbot") || item.getText().equals("चैट बॉट")) {
             startActivity(new Intent(getBaseContext(), ChatActivity.class));
         } else if (item.getText().equals("News") || item.getText().equals("समाचार")) {
             startActivity(new Intent(getBaseContext(),NewsActivity.class));
@@ -336,7 +344,7 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
 //            Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
 
             ;
-        } else if(item.getText().equals("Provide some input")){
+        } else if(item.getText().equals("Provide some input") || item.getText().equals("कुछ इनपुट दें")){
             startActivity(new Intent(getBaseContext(),QuestionnaireActivity.class));
         }
         else {

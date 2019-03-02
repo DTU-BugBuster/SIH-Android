@@ -165,6 +165,8 @@
     <string name="news_water">News</string>
     <string name="news_water_h">समाचार</string>
     <string name="is_safe">Is Place Safe</string>
+    <string name="input">Provide some input</string>
+    <string name="input_h">कुछ इनपुट दें</string>
     <string name="is_safe_h">जगह सुरक्षित है ?</string>
     <string name="home_remedies">Home Remedies</string>
     <string name="home_remedies_h">घरेलू उपचार</string>
@@ -188,4 +190,9 @@
     <string name="device_shaken">Device shaken!</string>
     <string name="update_sensibility">Update \"sensibility\" to: %.1fG</string>
     <string name="update_shake_number">Update \"number of shakes to trigger\" to: %d</string>
+    <string name="shake_to_call">Shake to call</string>
+    <string name="shake_to_call_h">कॉल करने के लिए हिलाएँ</string>
+    <string name="paytm_karo">Paytm Karo!!</string>
+    <string name="paytm_karo_h">पीटीएम करो!!</string>
+
 </resources>
