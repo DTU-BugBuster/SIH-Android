@@ -6,7 +6,7 @@
     <color name="bg_bubble_self">#62caa6</color>
     <color name="bg_bubble_watbot">#ecf0f1</color>
 
-    <color name="primary">#fff</color>
+    <color name="primary">#f00</color>
     <color name="primary_dark">#159c45</color>
     <color name="primary_darker">#19783b</color>
     <color name="accent">#FFFFFF</color>
@@ -36,7 +36,7 @@
 
     <color name="dark">#0f0f0f</color>
     <color name="grey">#151616</color>
-    <color name="red">#fff</color>
+    <color name="red">#f00</color>
 
     <array name="rainbow">
 

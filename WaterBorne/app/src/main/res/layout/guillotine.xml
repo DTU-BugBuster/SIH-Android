@@ -27,12 +27,14 @@
         <ImageView
             style="@style/ImageView.GuillotineItem"
             android:src="@drawable/anonymous"
+            android:visibility="gone"
             />
 
         <Button
             style="@style/TextView.GuillotineItem"
             android:onClick="anonymousChat"
             android:id="@+id/tvSwitch"
+            android:visibility="gone"
             android:text="Switch to Hindi"
             />
     </LinearLayout>

@@ -35,6 +35,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 //        ButterKnife.inject(this);
 
+        mAuth = FirebaseAuth.getInstance();
+
 
         _emailText = findViewById(R.id.input_email);
         _passwordText = findViewById(R.id.input_password);
@@ -66,13 +68,17 @@ public class LoginActivity extends AppCompatActivity {
                 startActivityForResult(intent, REQUEST_SIGNUP);
             }
         });
-        mAuth = FirebaseAuth.getInstance();
-        if(mAuth.getCurrentUser() != null){
-            startActivity(new Intent(getBaseContext(),MenuScreen.class));
-            finish();
+//        mAuth = FirebaseAuth.getInstance();
+//        if(mAuth.getCurrentUser() != null){
+//            startActivity(new Intent(getBaseContext(),MenuScreen.class));
+//            finish();
+//        }
+
+        int value = getIntent().getIntExtra("MenuSreen",1);
+
+        if(value != 1){
+          updateUI(mAuth.getCurrentUser());
         }
-
-
 
     }
 

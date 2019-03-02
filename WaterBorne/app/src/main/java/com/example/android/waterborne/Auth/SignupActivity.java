@@ -5,10 +5,13 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,8 +26,9 @@ import com.google.firebase.auth.FirebaseUser;
 public class SignupActivity extends AppCompatActivity {
     private static final String TAG = "SignupActivity";
     private FirebaseAuth mAuth;
+    private SwitchCompat languageSwitch;
 
-    public static int switchNumber = 1;
+    public static int switchNumber = 0;
 
     //    @InjectView(R.id.input_name)
     EditText _nameText;
@@ -45,6 +49,7 @@ public class SignupActivity extends AppCompatActivity {
 
         _nameText = findViewById(R.id.input_name);
         _emailText = findViewById(R.id.input_email);
+        languageSwitch = findViewById(R.id.languageSwitch);
         _passwordText = findViewById(R.id.input_password);
         _signupButton = findViewById(R.id.btn_signup);
         _loginLink  = findViewById(R.id.link_login);
@@ -62,6 +67,18 @@ public class SignupActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        languageSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // do something, the isChecked will be
+                // true if the switch is in the On position
+                if(isChecked)
+                  switchNumber = 1;
+                else
+                    switchNumber = 0;
+            }
+        });
+
 
         mAuth = FirebaseAuth.getInstance();
     }
@@ -87,6 +104,7 @@ public class SignupActivity extends AppCompatActivity {
             onSignupFailed();
             return;
         }
+
 
         _signupButton.setEnabled(false);
 
