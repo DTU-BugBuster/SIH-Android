@@ -21,6 +21,8 @@ public class HomeRemedy extends HomeRemediesActivity {
     @BindView(R.id.materialViewPager)
     MaterialViewPager mViewPager;
 
+    public static int currentPosition;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,16 +39,8 @@ public class HomeRemedy extends HomeRemediesActivity {
 
             @Override
             public Fragment getItem(int position) {
-                switch (position % 4) {
-                    //case 0:
-                    //    return RecyclerViewFragment.newInstance();
-                    //case 1:
-                    //    return RecyclerViewFragment.newInstance();
-                    //case 2:
-                    //    return WebViewFragment.newInstance();
-                    default:
-                        return RecyclerViewFragment.newInstance();
-                }
+
+                       return RecyclerViewFragment.newInstance();
             }
 
             @Override
@@ -56,6 +50,7 @@ public class HomeRemedy extends HomeRemediesActivity {
 
             @Override
             public CharSequence getPageTitle(int position) {
+                currentPosition =  position;
                 switch (position % 4) {
                     case 0:
                         return "Disease 1";

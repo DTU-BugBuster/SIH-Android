@@ -88,6 +88,7 @@ public class HeatmapsDemoActivity extends HeatMapsActivity {
 
         // Set up the spinner/dropdown list
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        spinner.setVisibility(View.GONE);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.heatmaps_datasets_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -124,7 +125,7 @@ public class HeatmapsDemoActivity extends HeatMapsActivity {
                     rc.add(post);
                 }
                 for (int i = 0; i < rc.size(); i++) {
-                    latLngs.add(new LatLng(rc.get(i).addresslat, rc.get(i).addresslng));
+                    latLngs.add(new LatLng(Double.valueOf(rc.get(i).addresslat), Double.valueOf(rc.get(i).addresslng)));
                 }
 
                 TextView attribution = ((TextView) findViewById(R.id.attribution));

@@ -28,6 +28,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".MapsActivity"></activity>
+        <activity android:name=".ListActivity" />
+        <activity android:name=".DetailActivity" />
         <activity android:name=".WaterQualityImageUpload" />
 
         <meta-data
@@ -68,7 +71,7 @@
         <activity android:name=".HomeRemedies.HomeRemedy" />
         <activity android:name=".IsPlaceSafe.IsPlaceSafeActivity" />
         <activity android:name=".Chatbot.ChatActivity" />
-        <activity android:name=".ShakeActivity"></activity>
+        <activity android:name=".ShakeActivity" />
     </application>
 
 </manifest>

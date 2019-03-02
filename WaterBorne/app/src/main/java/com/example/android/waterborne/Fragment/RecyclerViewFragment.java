@@ -1,11 +1,8 @@
 package com.example.android.waterborne.Fragment;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,27 +10,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.android.waterborne.Adapters.TestRecyclerViewAdapter;
+import com.example.android.waterborne.Models.HomeRemedyModel;
 import com.example.android.waterborne.R;
 import com.github.florent37.materialviewpager.header.MaterialViewPagerHeaderDecorator;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link RecyclerViewFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link RecyclerViewFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
+
 public class RecyclerViewFragment extends Fragment {
 
-    private static final boolean GRID_LAYOUT = false;
-    private static final int ITEM_COUNT = 5;
+    private static final int ITEM_COUNT = 1;
 
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
@@ -52,20 +42,11 @@ public class RecyclerViewFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
 
-        final List<Object> items = new ArrayList<>();
-
-        for (int i = 0; i < ITEM_COUNT; ++i) {
-            items.add(new Object());
-        }
+        final ArrayList<HomeRemedyModel> items = new ArrayList<HomeRemedyModel>();
 
 
-        //setup materialviewpager
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        if (GRID_LAYOUT) {
-            mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-        } else {
-            mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        }
         mRecyclerView.setHasFixedSize(true);
 
         //Use this now

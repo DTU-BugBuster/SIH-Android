@@ -4,27 +4,16 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.tbouron.shakedetector.library.ShakeDetector;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class ShakeActivity extends AppCompatActivity implements ShakeDetector.OnShakeListener {
 
@@ -107,21 +96,21 @@ public class ShakeActivity extends AppCompatActivity implements ShakeDetector.On
             // TODO: Consider calling
             startActivity(intent);
             return;
-        }
-        else{
+        } else {
 
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                     Manifest.permission.CALL_PHONE)) {
             } else {
 
                 ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.CALL_PHONE},123
-                        );
+                        new String[]{Manifest.permission.CALL_PHONE}, 123
+                );
 
             }
         }
 
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {

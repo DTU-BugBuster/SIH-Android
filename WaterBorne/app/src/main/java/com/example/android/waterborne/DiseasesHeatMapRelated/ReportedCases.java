@@ -1,35 +1,78 @@
 package com.example.android.waterborne.DiseasesHeatMapRelated;
 
+
+
 public class ReportedCases {
-    Double addresslat;
-    Double addresslng;
-    String d_name;
+
+    String addresslat;
+    String addresslng;
+    int age;
+    String disease;
+    String gender;
     String h_name;
+    String name;
+    String pincode;
+    String state;
 
-    public ReportedCases() {
 
-    }
-
-    public Double getAddresslat() {
+    public String getAddresslat() {
         return addresslat;
     }
 
-    public Double getAddresslng() {
+    public String getAddresslng() {
         return addresslng;
     }
 
-    public String getD_name() {
-        return d_name;
+    public int getAge() {
+        return age;
+    }
+
+    public String getDisease() {
+        return disease;
+    }
+
+    public String getGender() {
+        return gender;
     }
 
     public String getH_name() {
         return h_name;
     }
 
-    public ReportedCases(Double addresslat, Double addresslng, String d_name, String h_name) {
+    public String getName() {
+        return name;
+    }
+
+    public String getPincode() {
+        return pincode;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public String getWater_borne() {
+        return water_borne;
+    }
+
+    String water_borne;
+
+    public ReportedCases(String addresslat, String addresslng, int age, String disease, String gender, String h_name, String name, String pincode, String state, String water_borne) {
         this.addresslat = addresslat;
         this.addresslng = addresslng;
-        this.d_name = d_name;
+        this.age = age;
+        this.disease = disease;
+        this.gender = gender;
         this.h_name = h_name;
+        this.name = name;
+        this.pincode = pincode;
+        this.state = state;
+        this.water_borne = water_borne;
     }
+
+
+    public ReportedCases() {
+
+    }
+
 }
