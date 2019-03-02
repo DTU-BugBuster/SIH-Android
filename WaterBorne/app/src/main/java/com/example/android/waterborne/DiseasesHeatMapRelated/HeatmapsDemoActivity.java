@@ -82,7 +82,7 @@ public class HeatmapsDemoActivity extends HeatMapsActivity implements DiseaseCou
         return R.layout.activity_heatmaps_demo;
     }
 
-    private double factor = 0.04;
+    private double factor = 0.4;
 
     @Override
     protected void showBottomInfo(LatLng point) {

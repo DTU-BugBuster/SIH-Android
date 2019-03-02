@@ -15,14 +15,16 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="@string/button_radius"
-            android:onClick="changeRadius" />
+            android:onClick="changeRadius"
+            android:visibility="gone"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="@string/button_gradient"
-            android:onClick="changeGradient" />
+            android:onClick="changeGradient"
+            android:visibility="gone"/>
 
 
         <Button
@@ -30,14 +32,16 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="@string/button_opacity"
-            android:onClick="changeOpacity" />
+            android:onClick="changeOpacity"
+            android:visibility="gone"/>
 
     </LinearLayout>
 
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
 
     <fragment
         android:id="@+id/map"
