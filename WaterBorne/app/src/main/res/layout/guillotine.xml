@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/guillotine_background"
+    android:backgroundTint="@color/white"
     android:orientation="vertical"
     tools:context=".MenuScreen">
 
     <android.support.v7.widget.Toolbar
         style="@style/Toolbar"
+        android:background="@color/colorPrimary"
         app:contentInsetStart="0dp">
 
         <ImageView
@@ -19,6 +21,7 @@
 
     </android.support.v7.widget.Toolbar>
 
+
     <LinearLayout
         android:id="@+id/profile_group"
         style="@style/LinearLayout.GuillotineItem"
@@ -27,16 +30,28 @@
         <ImageView
             style="@style/ImageView.GuillotineItem"
             android:src="@drawable/anonymous"
-            android:visibility="gone"
-            />
+            android:visibility="gone" />
 
         <Button
+            android:id="@+id/tvSwitch"
             style="@style/TextView.GuillotineItem"
             android:onClick="anonymousChat"
-            android:id="@+id/tvSwitch"
-            android:visibility="gone"
             android:text="Switch to Hindi"
-            />
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/settings_group"
+        style="@style/LinearLayout.GuillotineItem">
+
+        <ImageView
+            style="@style/ImageView.GuillotineItem"
+            android:src="@drawable/ic_om" />
+
+        <Button
+            android:id="@+id/change_lang"
+            style="@style/TextView.GuillotineItem"
+            android:text="Change Language" />
     </LinearLayout>
 
     <LinearLayout
@@ -48,8 +63,8 @@
             android:src="@drawable/hospital" />
 
         <Button
+            android:id="@+id/tvhosp"
             style="@style/TextView.GuillotineItem"
-             android:id="@+id/tvhosp"
             android:onClick="hosp"
             android:text="@string/shake_to_call" />
     </LinearLayout>
@@ -64,40 +79,30 @@
             android:src="@drawable/money" />
 
         <Button
+            android:id="@+id/tvpaytm"
             style="@style/TextView.GuillotineItem"
             android:onClick="paytm"
-            android:id="@+id/tvpaytm"
             android:text="@string/paytm_karo" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/activity_group"
         style="@style/LinearLayout.GuillotineItem">
 
         <ImageView
             style="@style/ImageView.GuillotineItem"
-            android:src="@drawable/logout" />
+            android:src="@drawable/ic_logout" />
 
         <Button
+            android:id="@+id/tvsignout"
             style="@style/TextView.GuillotineItem"
             android:onClick="login"
-            android:id="@+id/tvsignout"
             android:text="@string/sign_out" />
     </LinearLayout>
 
     <!--<View-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="@dimen/guillotine_divider_height" />-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="@dimen/guillotine_divider_height" />-->
 
-    <!--<LinearLayout-->
-        <!--android:id="@+id/settings_group"-->
-        <!--style="@style/LinearLayout.GuillotineItem">-->
 
-        <!--<ImageView-->
-            <!--style="@style/ImageView.GuillotineItem"-->
-            <!--android:src="@drawable/ic_settings" />-->
-
-        <!--<com.example.android.myapplication.Widget.CanaroTextView-->
-            <!--style="@style/TextView.GuillotineItem"-->
-            <!--android:text="@string/settings" />-->
-    <!--</LinearLayout>-->
 </LinearLayout>

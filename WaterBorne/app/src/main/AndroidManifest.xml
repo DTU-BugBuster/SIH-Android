@@ -11,8 +11,8 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <permission
         android:name="com.google.maps.android.utils.permission.MAPS_RECEIVE"
@@ -29,7 +29,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MapsActivity"></activity>
+        <activity android:name=".DummyActivity"></activity>
+        <activity android:name=".MapsActivity" />
         <activity android:name=".ListActivity" />
         <activity android:name=".DetailActivity" />
         <activity android:name=".WaterQualityImageUpload" />
@@ -51,7 +52,6 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
         <!--
              Set custom default icon. This is used when no icon is set for incoming notification messages.
              See README(https://goo.gl/l4GJaQ) for more.
@@ -99,7 +99,7 @@
         <activity android:name=".Chatbot.ChatActivity" />
         <activity android:name=".ShakeActivity" />
         <activity android:name=".QuestionnaireActivity" />
-        <activity android:name=".PlantDiseaseDetection.PlantDisease"></activity>
+        <activity android:name=".PlantDiseaseDetection.PlantDisease" />
     </application>
 
 </manifest>

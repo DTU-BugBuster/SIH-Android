@@ -103,8 +103,6 @@ public class HeatmapsDemoActivity extends HeatMapsActivity implements DiseaseCou
         DiseaseCountSheet bottomSheet = new DiseaseCountSheet();
 
         bottomSheet.show(getSupportFragmentManager(), "exampleBottomSheet");
-
-        Toast.makeText(this, String.valueOf(count), Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -191,7 +191,7 @@
     <string name="update_sensibility">Update \"sensibility\" to: %.1fG</string>
     <string name="update_shake_number">Update \"number of shakes to trigger\" to: %d</string>
 
-  <string name="title_activity_maps">MedLoco</string>
+    <string name="title_activity_maps">MedLoco</string>
     <string name="gps_network_not_enabled">GPS or network services are disabled. Do you wish to enable them? </string>
     <string name="open_location_settings">Enable GPS</string>
     <string name="cancel">Cancel</string>
