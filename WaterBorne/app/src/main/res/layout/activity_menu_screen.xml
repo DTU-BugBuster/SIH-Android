@@ -33,6 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="Water Borne"
+            android:textColor="#ffffff"
             />
 
     </android.support.v7.widget.Toolbar>

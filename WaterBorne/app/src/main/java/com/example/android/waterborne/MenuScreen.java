@@ -5,10 +5,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -24,31 +24,19 @@ import com.example.android.waterborne.Adapters.MenuAdapter;
 import com.example.android.waterborne.Auth.LoginActivity;
 import com.example.android.waterborne.Auth.SignupActivity;
 import com.example.android.waterborne.ChatApp.AnonymousChat;
-import com.example.android.waterborne.ChatBotRelated.ChatbotActivity;
 import com.example.android.waterborne.Chatbot.ChatActivity;
-import com.example.android.waterborne.DiseasesHeatMapRelated.HeatMapsActivity;
 import com.example.android.waterborne.DiseasesHeatMapRelated.HeatmapsDemoActivity;
 import com.example.android.waterborne.HomeRemedies.HomeRemedy;
 import com.example.android.waterborne.IsPlaceSafe.IsPlaceSafeActivity;
 import com.example.android.waterborne.Models.Item;
-import com.example.android.waterborne.NearbyHospitalsRelated.NearbyHospitalsActivity;
 import com.example.android.waterborne.PlantDiseaseDetection.PlantDisease;
 import com.github.tbouron.shakedetector.library.ShakeDetector;
 import com.google.firebase.auth.FirebaseAuth;
-import com.mxn.soul.flowingdrawer_core.FlowingDrawer;
-import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
-import com.nightonke.boommenu.BoomButtons.HamButton;
-import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
-import com.nightonke.boommenu.BoomMenuButton;
-import com.nightonke.boommenu.ButtonEnum;
-import com.nightonke.boommenu.Piece.PiecePlaceEnum;
 import com.yalantis.guillotine.animation.GuillotineAnimation;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
-import me.itangqi.waveloadingview.WaveLoadingView;
 
 public class MenuScreen extends AppCompatActivity implements View.OnClickListener, MenuAdapter.ItemListener, ShakeDetector.OnShakeListener {
 
@@ -85,6 +73,7 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
     static boolean shake = true;
     static int imageResourceIndex = 0;
     static int str = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,31 +86,25 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         arrayList = new ArrayList<>();
 
- if (SignupActivity.switchNumber == 0){
-
-            arrayList.add(new Item(getString(R.string.chat_doctor), R.drawable.ic_doctor, "#ffffff"));
+        if (SignupActivity.switchNumber == 0) {
+            arrayList.add(new Item(getString(R.string.heatmap), R.drawable.ic_heatmap, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.hospital), R.drawable.ic_nearest_hosp, "#ffffff"));
             arrayList.add(new Item(getString(R.string.plant_disease_detection), R.drawable.plant, "#ffffff"));
-            arrayList.add(new Item(getString(R.string.test_ai), R.drawable.ic_ai_testing, "#ffffff"));
-            arrayList.add(new Item(getString(R.string.chatbot), R.drawable.ic_chat_bot , "#ffffff"));
+            arrayList.add(new Item(getString(R.string.chatbot), R.drawable.ic_chat_bot, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.home_remedies), R.drawable.medical, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.input), R.drawable.form, "#ffffff"));
             arrayList.add(new Item(getString(R.string.news_water), R.drawable.ic_newspaper, "#ffffff"));
             arrayList.add(new Item(getString(R.string.is_safe), R.drawable.tsunami_colorless, "#ffffff"));
-            arrayList.add(new Item(getString(R.string.input),R.drawable.form,"#ffffff"));
-            arrayList.add(new Item(getString(R.string.home_remedies), R.drawable.medical, "#ffffff"));
-            arrayList.add(new Item(getString(R.string.hospital), R.drawable.ic_nearest_hosp, "#ffffff"));
-            arrayList.add(new Item(getString(R.string.heatmap), R.drawable.ic_heatmap, "#ffffff"));
-        }
-        else{
-
-            arrayList.add(new Item(getString(R.string.chat_doctor_h), R.drawable.ic_doctor, "#ffffff"));
+        } else {
+            arrayList.add(new Item(getString(R.string.heatmap_h), R.drawable.ic_heatmap, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.hospital_h), R.drawable.ic_nearest_hosp, "#ffffff"));
             arrayList.add(new Item(getString(R.string.plant_disease_detection_h), R.drawable.plant, "#ffffff"));
-            arrayList.add(new Item(getString(R.string.test_ai_h), R.drawable.ic_ai_testing, "#ffffff"));
-            arrayList.add(new Item(getString(R.string.chatbot_h), R.drawable.ic_chat_bot , "#ffffff"));
+            arrayList.add(new Item(getString(R.string.chatbot_h), R.drawable.ic_chat_bot, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.home_remedies_h), R.drawable.medical, "#ffffff"));
+            arrayList.add(new Item(getString(R.string.input_h), R.drawable.form, "#ffffff"));
             arrayList.add(new Item(getString(R.string.news_water_h), R.drawable.ic_newspaper, "#ffffff"));
             arrayList.add(new Item(getString(R.string.is_safe_h), R.drawable.tsunami_colorless, "#ffffff"));
-            arrayList.add(new Item(getString(R.string.input_h),R.drawable.form,"#ffffff"));
-            arrayList.add(new Item(getString(R.string.home_remedies_h), R.drawable.medical, "#ffffff"));
-            arrayList.add(new Item(getString(R.string.hospital_h), R.drawable.ic_nearest_hosp, "#ffffff"));
-            arrayList.add(new Item(getString(R.string.heatmap_h), R.drawable.ic_heatmap, "#ffffff"));
+
         }
         MenuAdapter menuAdapter = new MenuAdapter(this, arrayList, this);
         recyclerView.setAdapter(menuAdapter);
@@ -178,8 +161,8 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
     }
 
     private void convertToHindi(int switchNumber) {
-       if (switchNumber == 0)
-           return;
+        if (switchNumber == 0)
+            return;
         TextView tvMenuscreenHeading = findViewById(R.id.tvMenuscreenHeading);
         tvMenuscreenHeading.setText("जल जनित");
         Button tvHosp = findViewById(R.id.tvhosp);
@@ -204,43 +187,43 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
         if (str >= Strings.length) str = 0;
         return Strings[str++];
     }
+
     public static int getImageResource() {
         if (imageResourceIndex >= imageResources.length) imageResourceIndex = 0;
         return imageResources[imageResourceIndex++];
     }
-    public void start(int pos)
-    {
+
+    public void start(int pos) {
         //Toast.makeText(this, Integer.toString(pos), Toast.LENGTH_LONG).show();
-        Intent in = new Intent( this, MainActivity.class);
+        Intent in = new Intent(this, MainActivity.class);
         startActivity(in);
     }
-    public void stock(int pos)
-    {
+
+    public void stock(int pos) {
         // Toast.makeText(this, Integer.toString(pos), Toast.LENGTH_LONG).show();
 //        Intent in = new Intent( this, ChatActivity.class);
 //        startActivity(in);
     }
-    public void sales(int pos)
-    {
+
+    public void sales(int pos) {
         //Toast.makeText(this, Integer.toString(pos), Toast.LENGTH_LONG).show();
 //        Intent in = new Intent( this, Spacewar.class);
 //        startActivity(in);
     }
-    public void buy(int pos)
-    {
+
+    public void buy(int pos) {
         // Toast.makeText(this, Integer.toString(pos), Toast.LENGTH_LONG).show();
 //        Intent in = new Intent( this, MemeActivity.class);
 //        startActivity(in);
     }
-    public void anonymous(int pos)
-    {
+
+    public void anonymous(int pos) {
         // Toast.makeText(this, Integer.toString(pos), Toast.LENGTH_LONG).show();
-        Intent in = new Intent( this, AnonymousChat.class);
+        Intent in = new Intent(this, AnonymousChat.class);
         startActivity(in);
     }
 
-    public void ordering(int pos)
-    {
+    public void ordering(int pos) {
         //Toast.makeText(this, Integer.toString(pos), Toast.LENGTH_LONG).show();
 //        Intent in = new Intent( this, MusicActivity.class);
 //        startActivity(in);
@@ -248,49 +231,46 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
-        switch (view.getId())
-        {
-            case R.id.tvpaytm:
-            {
+        switch (view.getId()) {
+            case R.id.tvpaytm: {
                 paytm(null);
                 break;
             }
-            case R.id.tvSwitch:
-            {
+            case R.id.tvSwitch: {
                 SignupActivity.switchNumber = 1 - SignupActivity.switchNumber;
             }
-            case R.id.tvhosp:
-
-            {hosp(null); break;}
-            case R.id.tvsignout:
-            {
+            case R.id.tvhosp: {
+                hosp(null);
+                break;
+            }
+            case R.id.tvsignout: {
 //                FirebaseAuth.getInstance().signOut();
                 login(null);
-                break;}
+                break;
+            }
 
 
         }
     }
 
-    public void login(View v ) {
-        startActivity(new Intent(getBaseContext(),LoginActivity.class));
+    public void login(View v) {
+        startActivity(new Intent(getBaseContext(), LoginActivity.class));
         finish();
     }
 
     public void hosp(View v) {
 //        startActivity(new Intent(this,NearbyHospitalsActivity.class));
 
-        if (shake){
+        if (shake) {
             shake = false;
-            if(SignupActivity.switchNumber == 0)
-               Toast.makeText(this, "Shake to call disabled", Toast.LENGTH_SHORT).show();
+            if (SignupActivity.switchNumber == 0)
+                Toast.makeText(this, "Shake to call disabled", Toast.LENGTH_SHORT).show();
             else
                 Toast.makeText(this, "अक्षम कॉल करने के लिए हिलाएँ", Toast.LENGTH_SHORT).show();
             ShakeDetector.destroy();
-            v.setBackgroundColor(Color.rgb(255,0,0));
+            v.setBackgroundColor(Color.rgb(255, 0, 0));
 
-        }
-        else{
+        } else {
             shake = true;
             if (SignupActivity.switchNumber == 0)
                 Toast.makeText(this, "Shake to call enabled", Toast.LENGTH_SHORT).show();
@@ -302,23 +282,24 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
         }
 
     }
+
     public void paytm(View v) {
         if (SignupActivity.switchNumber == 0)
-            Toast.makeText(this,"Paytm ",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Paytm ", Toast.LENGTH_SHORT).show();
         else
-            Toast.makeText(this,"Paytm ",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Paytm ", Toast.LENGTH_SHORT).show();
 
-        startActivity(new Intent(this,PaytmActivity.class));
+        startActivity(new Intent(this, PaytmActivity.class));
     }
 
     public void anonymousChat(View v) {
-        startActivity(new Intent(this,AnonymousChat.class));
+        startActivity(new Intent(this, AnonymousChat.class));
     }
 
     @Override
     public void onItemClick(Item item) {
         if (SignupActivity.switchNumber == 0)
-           Toast.makeText(getApplicationContext(), item.text + " is clicked", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), item.text + " is clicked", Toast.LENGTH_SHORT).show();
         else
             Toast.makeText(getApplicationContext(), item.text + " क्लिक किया है", Toast.LENGTH_SHORT).show();
 
@@ -330,33 +311,32 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
 //            Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
         } else if (item.getText().equals("Chatbot") || item.getText().equals("चैट बॉट")) {
             startActivity(new Intent(getBaseContext(), ChatActivity.class));
-        }else if (item.getText().equals("Plant Disease Detection") || item.getText().equals("पादप रोग का पता लगाना")) {
+        } else if (item.getText().equals("Plant Disease Detection") || item.getText().equals("पादप रोग का पता लगाना")) {
             startActivity(new Intent(getBaseContext(), PlantDisease.class));
-        }else if (item.getText().equals("News") || item.getText().equals("समाचार")) {
-            startActivity(new Intent(getBaseContext(),NewsActivity.class));
+        } else if (item.getText().equals("News") || item.getText().equals("समाचार")) {
+            startActivity(new Intent(getBaseContext(), NewsActivity.class));
             Toast.makeText(this, "Will add in next version", Toast.LENGTH_SHORT).show();
         } else if (item.getText().equals("Is Place Safe") || item.getText().equals("जगह सुरक्षित है")) {
-            startActivity(new Intent(getBaseContext(),IsPlaceSafeActivity.class));
+            startActivity(new Intent(getBaseContext(), IsPlaceSafeActivity.class));
 
 //            Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
-           ;
+            ;
         } else if (item.getText().equals("Home Remedies") || item.getText().equals("घरेलू उपचार")) {
-            startActivity(new Intent(getBaseContext(),HomeRemedy.class));
+            startActivity(new Intent(getBaseContext(), HomeRemedy.class));
             Toast.makeText(this, "Will add in next version", Toast.LENGTH_SHORT).show();
         } else if (item.getText().equals("Nearest Hospital") || item.getText().equals("नजदीकी अस्पताल")) {
             startActivity(new Intent(getBaseContext(), MapsActivity.class));
         } else if (item.getText().equals("Prediction of loss") || item.getText().equals("नुकसान की भविष्यवाणी")) {
 //            startActivity(new Intent(getBaseContext(),PredictLoss.class));
 //            Toast.makeText(this, "Don't blame me ask pranav xD", Toast.LENGTH_SHORT).show();
-        }else if (item.getText().equals("Detected Cases in Area")){
+        } else if (item.getText().equals("Detected Cases in Area")) {
             startActivity(new Intent(this, HeatmapsDemoActivity.class));
-           ;
-        } else if(item.getText().equals("Provide some input") || item.getText().equals("कुछ इनपुट दें")){
-            startActivity(new Intent(getBaseContext(),QuestionnaireActivity.class));
-        }
-        else {
+            ;
+        } else if (item.getText().equals("Provide some input") || item.getText().equals("कुछ इनपुट दें")) {
+            startActivity(new Intent(getBaseContext(), QuestionnaireActivity.class));
+        } else {
             if (SignupActivity.switchNumber == 0)
-               Toast.makeText(this, "Error !", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Error !", Toast.LENGTH_SHORT).show();
             else
                 Toast.makeText(this, "त्रुटि! नुकसान की", Toast.LENGTH_SHORT).show();
         }
@@ -364,14 +344,13 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
 
     @Override
     public void OnShake() {
-        if(checkPhonePermission()){
-            if(shake) {
+        if (checkPhonePermission()) {
+            if (shake) {
                 Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "8851506992"));
                 startActivity(intent);
             }
 
-        }
-        else{
+        } else {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.READ_CONTACTS}, 123);
 

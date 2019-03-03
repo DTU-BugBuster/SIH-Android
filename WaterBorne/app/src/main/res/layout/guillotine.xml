@@ -36,7 +36,6 @@
             android:id="@+id/tvSwitch"
             android:visibility="gone"
             android:text="Switch to Hindi"
-            android:visibility="gone"
             />
     </LinearLayout>
 
@@ -57,7 +56,8 @@
 
     <LinearLayout
         android:id="@+id/paytm_group"
-        style="@style/LinearLayout.GuillotineItem">
+        style="@style/LinearLayout.GuillotineItem"
+        android:visibility="gone">
 
         <ImageView
             style="@style/ImageView.GuillotineItem"
