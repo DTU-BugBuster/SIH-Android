@@ -26,10 +26,12 @@ import com.example.android.waterborne.Auth.SignupActivity;
 import com.example.android.waterborne.ChatApp.AnonymousChat;
 import com.example.android.waterborne.Chatbot.ChatActivity;
 import com.example.android.waterborne.DiseasesHeatMapRelated.HeatmapsDemoActivity;
+import com.example.android.waterborne.HomeRemedies.HomeRemediesActivity;
 import com.example.android.waterborne.HomeRemedies.HomeRemedy;
 import com.example.android.waterborne.IsPlaceSafe.IsPlaceSafeActivity;
 import com.example.android.waterborne.Models.Item;
 import com.example.android.waterborne.PlantDiseaseDetection.PlantDisease;
+import com.example.android.waterborne.ReportIssuesRelated.ReportProblemActivity;
 import com.github.tbouron.shakedetector.library.ShakeDetector;
 import com.google.firebase.auth.FirebaseAuth;
 import com.yalantis.guillotine.animation.GuillotineAnimation;
@@ -97,6 +99,7 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
             arrayList.add(new Item(getString(R.string.input), R.drawable.form, "#ffffff"));
             arrayList.add(new Item(getString(R.string.news_water), R.drawable.ic_newspaper, "#ffffff"));
             arrayList.add(new Item(getString(R.string.is_safe), R.drawable.tsunami_colorless, "#ffffff"));
+            arrayList.add(new Item("Report your case", R.drawable.tsunami, "#ffffff"));
         } else {
             arrayList.add(new Item(getString(R.string.heatmap_h), R.drawable.ic_heatmap, "#ffffff"));
             arrayList.add(new Item(getString(R.string.hospital_h), R.drawable.ic_nearest_hosp, "#ffffff"));
@@ -319,7 +322,7 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
         } else if (item.getText().equals("News") || item.getText().equals("समाचार")) {
             startActivity(new Intent(getBaseContext(), NewsActivity.class));
             Toast.makeText(this, "Will add in next version", Toast.LENGTH_SHORT).show();
-        } else if (item.getText().equals("Is Place Safe") || item.getText().equals("जगह सुरक्षित है")) {
+        } else if (item.getText().equals("Is Place Safe") || item.getText().equals("जगह सुरक्षित है ?")) {
             startActivity(new Intent(getBaseContext(), IsPlaceSafeActivity.class));
         } else if (item.getText().equals("Home Remedies") || item.getText().equals("घरेलू उपचार")) {
             startActivity(new Intent(getBaseContext(), HomeRemedy.class));
@@ -332,9 +335,12 @@ public class MenuScreen extends AppCompatActivity implements View.OnClickListene
         } else if (item.getText().equals("Detected Cases in Area") || item.getText().equals("क्षेत्र में मामलों का पता लगाया")) {
             startActivity(new Intent(this, HeatmapsDemoActivity.class));
             ;
-        } else if (item.getText().equals("Provide some input") || item.getText().equals("कुछ इनपुट दें")) {
+        } else if (item.getText().equals("Donate Your Info") || item.getText().equals("अपनी जानकारी दान करें")) {
             startActivity(new Intent(getBaseContext(), QuestionnaireActivity.class));
-        } else {
+        }else if(item.getText().equals("Report your case")){
+             startActivity(new Intent(this, ReportProblemActivity.class));
+         }
+        else {
             if (SignupActivity.switchNumber == 0)
                 Toast.makeText(this, "Error !", Toast.LENGTH_SHORT).show();
             else

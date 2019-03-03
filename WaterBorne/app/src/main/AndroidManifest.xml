@@ -29,7 +29,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DummyActivity"></activity>
+        <activity android:name=".ReportCaseActivity"></activity>
+        <activity android:name=".DummyActivity" />
         <activity android:name=".MapsActivity" />
         <activity android:name=".ListActivity" />
         <activity android:name=".DetailActivity" />

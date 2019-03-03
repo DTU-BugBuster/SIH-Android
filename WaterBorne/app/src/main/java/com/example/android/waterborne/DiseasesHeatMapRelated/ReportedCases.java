@@ -4,6 +4,7 @@ package com.example.android.waterborne.DiseasesHeatMapRelated;
 
 public class ReportedCases {
 
+    boolean isweb;
     String addresslat;
     String addresslng;
     int age;
@@ -14,6 +15,9 @@ public class ReportedCases {
     String pincode;
     String state;
 
+    public boolean isIsweb() {
+        return isweb;
+    }
 
     public String getAddresslat() {
         return addresslat;
@@ -57,7 +61,8 @@ public class ReportedCases {
 
     String water_borne;
 
-    public ReportedCases(String addresslat, String addresslng, int age, String disease, String gender, String h_name, String name, String pincode, String state, String water_borne) {
+    public ReportedCases(boolean isweb, String addresslat, String addresslng, int age, String disease, String gender, String h_name, String name, String pincode, String state, String water_borne) {
+        this.isweb = isweb;
         this.addresslat = addresslat;
         this.addresslng = addresslng;
         this.age = age;
